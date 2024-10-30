@@ -1,0 +1,9 @@
+/* CategoryCard.css */
+
+.image-container {
+  position: relative;
+}
+
+.category-title {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for better readability */
+}

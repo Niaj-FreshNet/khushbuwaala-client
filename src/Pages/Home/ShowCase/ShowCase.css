@@ -1,0 +1,30 @@
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.group:hover .animate-fade-in {
+    animation: fade-in 0.5s forwards;
+}
+
+.relative {
+    perspective: 800px; /* Perspective for 3D effect */
+}
+
+.transition-transform {
+    transform-style: preserve-3d; /* Preserve 3D effect */
+}
+
+.group:hover .transition-transform {
+    transform: rotateY(3deg); /* Slight rotation for 3D effect */
+}
+
+.shadow-lg {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Enhance shadow effect */
+}

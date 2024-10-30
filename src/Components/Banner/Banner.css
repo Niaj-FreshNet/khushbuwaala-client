@@ -1,0 +1,41 @@
+/* Banner.css */
+.banner-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%; /* Full width */
+    height: 500px; /* Default height for larger screens */
+}
+
+@media (max-width: 767px) { /* Mobile view */
+    .banner-container {
+        height: 480px; /* Height for mobile */
+    }
+}
+
+@media (min-width: 768px) { /* Desktop view */
+    .banner-container {
+        height: 580px; /* Height for desktop */
+    }
+}
+
+.custom-banner-btn {
+    background: linear-gradient(135deg, #ff6b6b, #ff4757); /* Gradient background */
+    border: none; /* Remove border */
+    padding: 12px 24px; /* Padding */
+    font-size: 1.125rem; /* Font size */
+    color: white; /* Text color */
+    font-weight: bold; /* Bold text */
+    transition: all 0.3s ease, transform 0.2s ease; /* Transition effects */
+    border-radius: 50px; /* Rounded button */
+    box-shadow: 0 4px 20px rgba(255, 107, 107, 0.5); /* Soft shadow for depth */
+}
+
+.custom-banner-btn:hover {
+    background: linear-gradient(135deg, #ff4757, #ff6b6b); /* Change on hover */
+    transform: translateY(-5px) scale(1.05); /* Lift and scale effect */
+}
+
+.banner-container h1, 
+.banner-container p { /* Scoped styles */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Scoped text shadow */
+}
