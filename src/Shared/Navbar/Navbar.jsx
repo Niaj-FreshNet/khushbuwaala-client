@@ -92,8 +92,8 @@ const Navbar = () => {
 
     return (
         <>
-            <div className={`navbar h-2 border-red-600 glassy-navbar ${isVisible ? 'top-0' : '-top-16'} fixed w-full z-50`}>
-                <div className='max-w-screen-xl flex-1 justify-between mx-auto my-auto items-center'>
+            <div className={`navbar max-w-screen-2xl mx-auto h-2 border-red-600 glassy-navbar ${isVisible ? 'top-0' : '-top-16'} fixed w-full z-50`}>
+                <div className='flex-1 justify-between mx-auto my-auto items-center'>
                     <div>
                         <div className="dropdown">
                             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden" onClick={toggleDrawer}>
