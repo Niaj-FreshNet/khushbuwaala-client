@@ -8,6 +8,7 @@ import { MdFavoriteBorder } from 'react-icons/md';
 import { PiShoppingCartSimpleBold } from 'react-icons/pi';
 import CartDrawer from '../../Pages/AddToCart/CartDrawer/CartDrawer';
 import { CartContext } from '../../Cart/CartContext';
+import logo from '../../assets/KhushbuWaala.webp';
 
 const Navbar = () => {
     const { cartItems } = useContext(CartContext);
@@ -111,7 +112,14 @@ const Navbar = () => {
                                 </svg>
                             </div>
                         </div>
-                        <NavLink className="btn btn-md btn-ghost text-lg">KhushbuWaala</NavLink>
+                        <NavLink className="hidden lg:btn lg:btn-ghost">
+                            <img src={logo} alt="KhushbuWaala" className="h-8 w-auto" />
+                        </NavLink>
+                    </div>
+                    <div className='flex-1 text-center lg:hidden justify-center mx-auto my-auto'>
+                        <NavLink className="btn btn-ghost">
+                            <img src={logo} alt="KhushbuWaala" className="h-8 w-auto" />
+                        </NavLink>
                     </div>
                     <div className="flex-grow hidden lg:flex justify-center items-center">
                         {navOptions}
@@ -119,10 +127,10 @@ const Navbar = () => {
                     <div className="flex gap-8 items-center">
                         {/* Desktop Icons */}
                         <div className="hidden lg:flex gap-8 items-center">
-                            <span  className="relative group transition-transform duration-200 ease-in-out transform hover:scale-110">
+                            {/* <span  className="relative group transition-transform duration-200 ease-in-out transform hover:scale-110">
                                 <SearchOutlined className="text-xl transition-colors duration-200 ease-in-out group-hover:text-red-600" />
-                            </span>
-                            <span  className="relative group transition-transform duration-200 ease-in-out transform hover:scale-110">
+                            </span> */}
+                            <span className="relative group transition-transform duration-200 ease-in-out transform hover:scale-110">
                                 <MdFavoriteBorder className="text-xl transition-colors duration-200 ease-in-out group-hover:text-red-600" />
                                 <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
                             </span>
@@ -140,9 +148,9 @@ const Navbar = () => {
 
                         {/* Mobile Icons */}
                         <div className="flex lg:hidden gap-8 mr-6 items-center">
-                            <span className="relative group transition-transform duration-200 ease-in-out transform hover:scale-110">
+                            {/* <span className="relative group transition-transform duration-200 ease-in-out transform hover:scale-110">
                                 <SearchOutlined className="text-xl transition-colors duration-200 ease-in-out group-hover:text-red-600" />
-                            </span>
+                            </span> */}
                             <span className="relative group transition-transform duration-200 ease-in-out transform hover:scale-110">
                                 <PiShoppingCartSimpleBold onClick={handleAddtoCart} className="text-xl transition-colors duration-200 ease-in-out group-hover:text-red-600" />
                                 <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">5</span>
@@ -158,16 +166,12 @@ const Navbar = () => {
                 closable={true}
                 onClose={toggleDrawer}
                 open={drawerOpen}
-                styles={{
-                    body: { padding: 0, margin: 0 },
-                    header: { backgroundColor: '#001529', color: 'white' },
-                }}
+                bodyStyle={{ padding: 0 }}
+                headerStyle={{ backgroundColor: '#001529', color: 'white' }}
                 closeIcon={<span style={{ color: 'white' }}>✖</span>}
-                height="100%"
-                width={220}
-                style={{ zIndex: 1000 }}
+                width={260}
             >
-                <NavDrawer onMenuClick={() => setDrawerOpen(false)} />
+                <NavDrawer onMenuClick={toggleDrawer} /> {/* Pass the close function to NavDrawer */}
             </Drawer>
         </>
     );

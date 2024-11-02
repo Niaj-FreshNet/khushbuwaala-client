@@ -2,14 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { MdArrowDropDown, MdArrowDropUp } from 'react-icons/md';
 import { Button, Checkbox, Input, Radio, Form, message } from 'antd';
-import useAxiosPublic from '../../../Hooks/useAxiosPublic';
 import { CheckCircleOutlined } from '@ant-design/icons';
+import useOrders from '../../../Hooks/useOrders';
 
 const ThankYouPage = () => {
-    const axiosPublic = useAxiosPublic();
-    const [order, setOrder] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
 
     // Toggle the accordion state for order summary
@@ -21,37 +17,19 @@ const ThankYouPage = () => {
     const location = useLocation();
     const orderId = new URLSearchParams(location.search).get("orderId");
 
-    
-    useEffect(() => {
-        const fetchOrder = async () => {
-            setLoading(true);
-            try {
-                // Fetch order details with axiosPublic
-                const response = await axiosPublic.get(`/api/orders/${orderId}`);
-                console.log(response)
-                
-                setOrder(response.data); // Set the order data
-            } catch (error) {
-                message.error("An error occurred while fetching your order.");
-                setError(true);
-            } finally {
-                setLoading(false);
-            }
-        };
 
-        if (orderId) fetchOrder();
-    }, [orderId, axiosPublic]);
+    const [order, refetch, loading, error] = useOrders(orderId);
 
     if (loading) return <div>Loading...</div>;
     if (error || !order) return <div>Failed to load order details. Please contact support.</div>;
-    
+
     const { contactInfo, shippingAddress, billingAddress, cartItems, paymentMethod, subtotal, shippingCost, estimatedTaxes, total } = order;
 
     return (
         <div className="max-w-screen-2xl bg-gray-50 mx-auto mt-9 lg:mt-8 border-b-2 py-8">
             {/* Checkout Page Header */}
             <div className="bg-black mx-auto flex justify-center items-center py-2 mb-8">
-                <h2 className="text-lg font-bold text-white text-center py-[2px] my-auto">Thank You</h2>
+                <h2 className="text-lg font-bold text-white text-center py-[2px] my-auto">Alhamdulillah! Order Confirmed</h2>
             </div>
             <div>
 
@@ -129,58 +107,65 @@ const ThankYouPage = () => {
                 <div className='w-full lg:w-1/2 lg:pl-24'>
 
 
-                <div className="flex items-center justify-center mb-6 text-green-600">
-                <CheckCircleOutlined style={{ fontSize: '36px' }} />
-                <h1 className="text-2xl font-bold ml-3">Thank you, {order.shippingAddress.firstName}!</h1>
-            </div>
-
-            <div className="text-center mb-8">
-                <p className="text-lg font-semibold">Your order is confirmed</p>
-                <p>You’ll receive a confirmation email with your order number shortly.</p>
-            </div>
-
-            <div className="border-t-2 border-b-2 py-6 my-8">
-                <h2 className="text-xl font-bold">Order details</h2>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-4">
-                    {/* Contact Information */}
-                    <div className="border p-4 rounded-lg bg-gray-50">
-                        <h3 className="text-md font-semibold mb-2">Contact Information</h3>
-                        <p>{order.contactInfo.email}</p>
+                    <div className="flex items-center justify-center my-8 text-green-600">
+                        <div className='-mt-2'>
+                            <CheckCircleOutlined style={{ fontSize: '36px' }} />
+                        </div>
+                        <h1 className="text-md font-bold ml-3">Thank you, {order.shippingAddress.firstName}!</h1>
                     </div>
 
-                    {/* Payment Method */}
-                    <div className="border p-4 rounded-lg bg-gray-50">
-                        <h3 className="text-md font-semibold mb-2">Payment method</h3>
-                        <p>{order.paymentMethod} (COD) · ৳{total.toFixed(2)}</p>
+                    <div className="text-center mb-8">
+                        <p className="text-sm font-semibold">Your order is confirmed</p>
+                        <p className='text-sm'>Your Order Number is: <span className='font-bold text-gray-600'>{order.orderId}</span></p>
                     </div>
 
-                    {/* Shipping Address */}
-                    <div className="border p-4 rounded-lg bg-gray-50">
-                        <h3 className="text-md font-semibold mb-2">Shipping address</h3>
-                        <p>{order.shippingAddress.firstName} {order.shippingAddress.lastName}</p>
-                        <p>{order.shippingAddress.address}</p>
-                        <p>{order.shippingAddress.city} {order.shippingAddress.postalCode}</p>
-                        <p>{order.shippingAddress.country}</p>
-                        <p>{order.shippingAddress.phone}</p>
-                    </div>
+                    <div className="border-t-2 border-b-2 py-6 my-8">
+                        <h2 className="text-xl font-bold">Order details</h2>
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-4">
+                            {/* Contact Information */}
+                            <div className="border p-4 rounded-lg bg-gray-50">
+                                <h3 className="text-md font-semibold mb-2">Contact Information</h3>
+                                <p>{order.contactInfo.email}</p>
+                            </div>
 
-                    {/* Billing Address */}
-                    <div className="border p-4 rounded-lg bg-gray-50">
-                        <h3 className="text-md font-semibold mb-2">Billing address</h3>
-                        <p>{order.billingAddress.firstName} {order.billingAddress.lastName}</p>
-                        <p>{order.billingAddress.address}</p>
-                        <p>{order.billingAddress.city} {order.billingAddress.postalCode}</p>
-                        <p>{order.billingAddress.country}</p>
-                        <p>{order.billingAddress.phone}</p>
-                    </div>
-                </div>
+                            {/* Payment Method */}
+                            <div className="border p-4 rounded-lg bg-gray-50">
+                                <h3 className="text-md font-semibold mb-2">Payment method</h3>
+                                <p>{order.paymentMethod === 'cashOnDelivery' &&
+                                    <p>Cash On Delivery</p>
+                                } ৳{total.toFixed(2)}</p>
+                            </div>
 
-                {/* Shipping Method */}
-                <div className="border p-4 rounded-lg bg-gray-50 mt-6">
-                    <h3 className="text-md font-semibold mb-2">Shipping method</h3>
-                    <p>{order.shippingMethod === 'insideDhaka' ? 'Inside Dhaka' : 'Outside Dhaka'}</p>
-                </div>
-            </div>
+                            {/* Shipping Address */}
+                            <div className="border p-4 rounded-lg bg-gray-50">
+                                <div className='flex flex-col space-y-1'>
+                                    <p className="text-md font-semibold mb-2">Shipping Address</p>
+                                    <p className="font-light">{shippingAddress.firstName} {shippingAddress.lastName}</p>
+                                    <p className="font-light">{shippingAddress.address}</p>
+                                    <p className="font-light">{shippingAddress.phone}</p>
+                                    <p className="font-light">{shippingAddress.city}, {shippingAddress.postalCode}</p>
+                                </div>
+                            </div>
+
+                            {/* Billing Address */}
+                            <div className="border p-4 rounded-lg bg-gray-50">
+                                <div className='flex-1 flex-col space-y-1'>
+                                    <p className="text-md font-semibold mb-2">Billing Address</p>
+                                    <p className="font-light">{billingAddress.firstName} {billingAddress.lastName}</p>
+                                    <p className="font-light">{billingAddress.address}</p>
+                                    <p className="font-light">{billingAddress.city}, {billingAddress.postalCode}</p>
+                                    <p className="font-light">{billingAddress.phone}</p>
+                                    <p className="font-light">{contactInfo.email}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Shipping Method */}
+                        <div className="border p-4 rounded-lg bg-gray-50 mt-6">
+                            <h3 className="text-md font-semibold mb-2">Shipping method</h3>
+                            <p>{order.shippingMethod === 'insideDhaka' ? 'Inside Dhaka' : 'Outside Dhaka'}</p>
+                        </div>
+                    </div>
 
 
 
@@ -239,7 +224,7 @@ const ThankYouPage = () => {
                     </div>
 
                     {/* Continue Button */}
-                    <Button href='/' type="primary" size="medium" className="flex justify-end text-md font-bold rounded-md bg-black text-white h-[60px]">
+                    <Button href='/shop' type="primary" size="medium" className="flex justify-center text-md font-bold rounded-md bg-black text-white h-[60px]">
                         Continue Shopping
                     </Button>
                 </div>

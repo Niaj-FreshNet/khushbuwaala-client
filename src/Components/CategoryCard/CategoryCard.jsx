@@ -1,7 +1,7 @@
 import React from 'react';
 import { SfLink } from '@storefront-ui/react';
-import Category1 from '../../assets/Card1.jpg'; // Category image
-import Category2 from '../../assets/Card2.jpg'; // Second image for hover effect
+import Category1 from '../../assets/Category1.webp'; // Category image
+// import Category2 from '../../assets/Category2.webp'; // Category image
 import './CategoryCard.css'; // Import custom styles
 
 const CategoryCard = () => {

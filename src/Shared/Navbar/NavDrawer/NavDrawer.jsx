@@ -1,53 +1,41 @@
 import React from 'react';
 import { Menu } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import { FaUsers } from 'react-icons/fa';
-import { FcSalesPerformance, FcPaid } from 'react-icons/fc';
-import { PieChartOutlined, ShopOutlined } from '@ant-design/icons';
-import { PiAirplaneTilt } from 'react-icons/pi';
+import { HomeOutlined, ShopOutlined, GiftOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import { MdOutlineInventory2 } from 'react-icons/md';
 
 function getItem(label, key, icon, path) {
-    return {
-        key,
-        icon,
-        label,
-        path,
-    };
+    return { key, icon, label, path };
 }
 
 const items = [
-    getItem('HOME', '1', <PieChartOutlined />, '/'),
-    getItem('NEW IN', '2', <ShopOutlined />, '/shop'),
-    getItem('BEST PERFUMES', '3', <MdOutlineInventory2 />, '/shop'),
-    getItem('GIFTS AND PACKAGES', '4', <FcSalesPerformance />, '/shop'),
-    getItem('ABOUT', '5', <FcSalesPerformance />, '/about'),
+    getItem('Home', '1', <HomeOutlined />, '/'),
+    getItem('New In', '2', <ShopOutlined />, '/shop'),
+    getItem('Best Perfumes', '3', <MdOutlineInventory2 />, '/shop/best-perfumes'),
+    getItem('Gifts & Packages', '4', <GiftOutlined />, '/shop/gifts'),
+    getItem('About', '5', <InfoCircleOutlined />, '/about'),
 ];
 
-const NavDrawer = () => {
+const NavDrawer = ({ onMenuClick }) => {
     const navigate = useNavigate();
 
     const handleMenuClick = (menuItem) => {
         if (menuItem && menuItem.path) {
-            navigate(menuItem.path); // Navigate to the selected route
+            navigate(menuItem.path);
+            onMenuClick(); // Close the drawer after navigating
         }
     };
 
     return (
-        <div style={{ height: '100%', width: '220px', backgroundColor: '#001529' }}>
-            <Menu
-                theme="dark"
-                mode="inline"
-                items={items}
-                onClick={({ key }) => {
-                    const menuItem = items.find(i => i.key === key);
-                    if (menuItem) {
-                        handleMenuClick(menuItem);
-                    }
-                }}
-                style={{ height: '100%', borderRight: 0 }}
-            />
-        </div>
+        <Menu
+            mode="inline"
+            items={items}
+            onClick={({ key }) => {
+                const menuItem = items.find(i => i.key === key);
+                if (menuItem) handleMenuClick(menuItem);
+            }}
+            style={{ height: '100%' }}
+        />
     );
 };
 

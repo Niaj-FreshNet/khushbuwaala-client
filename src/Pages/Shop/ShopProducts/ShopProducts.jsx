@@ -103,7 +103,7 @@ const ShopProducts = () => {
             </div>
 
             {/* Product List */}
-            <div className={`grid gap-2 w-full ${columns === 1 ? 'grid-cols-1' : columns === 2 ? 'grid-cols-2' : columns === 3 ? 'grid-cols-3' : columns === 4 ? 'grid-cols-4' : 'grid-cols-5'}`}>
+            <div className={`grid gap-1 md:gap-2 w-full ${columns === 1 ? 'grid-cols-1' : columns === 2 ? 'grid-cols-2' : columns === 3 ? 'grid-cols-3' : columns === 4 ? 'grid-cols-4' : 'grid-cols-5'}`}>
                 {items.slice(0, visibleProducts).map((product) => (
                     <ProductCard key={product._id} product={product} onAddToCart={handleAddToCart} />
                 ))}

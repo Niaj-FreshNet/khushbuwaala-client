@@ -28,7 +28,7 @@ const HomePage = () => {
                     text={'Get the most luxurious fragrances at exclusive prices. Limited time offer!'}
                     button={'Shop Now'} />
             </div>
-            <div className='px-1 mt-1 mb-1'>
+            <div className='px-1 my-1'>
                 <Category />
             </div>
             <div className='max-w-screen-2xl mx-auto mb-0'>
@@ -64,15 +64,15 @@ const HomePage = () => {
                     <OudProduct />
                 </div>
             </div>
-            <div className='my-8'>
-                <Reviews />
-            </div>
             <div className='max-w-screen-2xl mx-auto my-8'>
                 <Services />
             </div>
             <div className='my-8'>
-                <ShowCase />
+                <Reviews />
             </div>
+            {/* <div className='my-8'>
+                <ShowCase />
+            </div> */}
             <div className='my-8'>
                 <Subscribe />
             </div>

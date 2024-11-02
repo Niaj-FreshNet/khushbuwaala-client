@@ -9,10 +9,8 @@ const CheckOutPage = () => {
     const axiosPublic = useAxiosPublic();
     const { cartItems, calculateSubtotal, checkoutMode, checkoutItem, proceedToCartCheckout } = useContext(CartContext);
     const [shippingMethod, setShippingMethod] = useState('insideDhaka');
-    const [sameAsShipping, setSameAsShipping] = useState(true);
     const [paymentMethod, setPaymentMethod] = useState(null);
-    const [billingAddress, setBillingAddress] = useState('sameAsShipping');
-    const [billingAddressType, setBillingAddressType] = useState('sameAsShipping');
+    const [billingType, setBillingType] = useState('sameAsShipping'); // Updated variable name
     const [isOpen, setIsOpen] = useState(false);
 
     // Determine which items to display on checkout
@@ -34,7 +32,7 @@ const CheckOutPage = () => {
     };
 
     const handleBillingChange = e => {
-        setBillingAddress(e.target.value);
+        setBillingType(e.target.value); // Update state with selected billing type
     };
 
     const handleCompleteOrder = async (values) => {
@@ -46,13 +44,15 @@ const CheckOutPage = () => {
         const { email, firstName, lastName, address, city, postalCode, phone, billingFirstName, billingLastName, billingAddress, billingCity, billingPostalCode, billingPhone } = values;
 
         const orderDetails = {
-            items: itemsToDisplay,
+            cartItems: itemsToDisplay,
             subtotal,
             shippingCost,
             estimatedTaxes,
             total,
             paymentMethod,
             shippingMethod,
+            postStatus: 'Pending',
+            paymentStatus: 'Due',
             contactInfo: {
                 email,
             },
@@ -64,8 +64,8 @@ const CheckOutPage = () => {
                 postalCode,
                 phone,
             },
-            billingAddress: billingAddressType === 'sameAsShipping' ?
-                { firstName, lastName, address, city, postalCode, phone } :
+            billingAddress: billingType === 'sameAsShipping' ?
+                { firstName, lastName, address, city, postalCode, phone } :  // Copy shipping info
                 {
                     firstName: billingFirstName,
                     lastName: billingLastName,
@@ -279,7 +279,7 @@ const CheckOutPage = () => {
                         {/* Billing Address Section */}
                         <div className="mb-8">
                             <h2 className="text-md font-bold mb-4">Billing Address</h2>
-                            <Radio.Group onChange={handleBillingChange} value={billingAddress} className="flex flex-col mb-4">
+                            <Radio.Group onChange={handleBillingChange} value={billingType} className="flex flex-col mb-4">
                                 <div className="border-2 p-[10px] text-black bg-white rounded-t-md">
                                     <Radio value="sameAsShipping">
                                         Same as shipping address
@@ -291,7 +291,8 @@ const CheckOutPage = () => {
                                     </Radio>
                                 </div>
                             </Radio.Group>
-                            {billingAddress === 'differentBillingAddress' && (
+
+                            {billingType === 'differentBillingAddress' && (
                                 <Form layout="vertical" className=''>
                                     <div className='flex justify-between gap-4'>
                                         <Form.Item name="firstName" rules={[{ required: true, message: 'First name is required' }]} className='w-1/2'>

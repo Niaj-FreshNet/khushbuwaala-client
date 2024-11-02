@@ -59,13 +59,13 @@ const InspiredPerfumeProduct = ({columns}) => {
                     {
                         breakpoint: 480,
                         settings: {
-                            slidesToShow: 1,
+                            slidesToShow: 2,
                         },
                     },
                 ]}
             >
             {items.map((product) => (
-              <div key={product._id} className="flex p-2">
+              <div key={product._id} className="flex md:p-2">
                 <ProductCard product={product} columns={columns} />
               </div>
             ))}
