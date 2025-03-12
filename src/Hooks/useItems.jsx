@@ -43,7 +43,7 @@
 // export default useItems;
 
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import useAxiosPublic from './useAxiosPublic';
 
 const useItems = () => {
@@ -54,26 +54,28 @@ const useItems = () => {
 
     const axiosPublic = useAxiosPublic();
 
-    useEffect(() => {
-        const fetchItems = async () => {
-            setIsLoading(true);
-            setIsError(false);
+    // Define the fetchItems function
+    const fetchItems = useCallback(async () => {
+        setIsLoading(true);
+        setIsError(false);
 
-            try {
-                const res = await axiosPublic.get('/item');
-                setItems(res.data);
-            } catch (err) {
-                setIsError(true);
-                setError(err);
-            } finally {
-                setIsLoading(false);
-            }
-        };
-
-        fetchItems();
+        try {
+            const res = await axiosPublic.get('/item'); // Fetch items from the API
+            setItems(res.data); // Update the items state
+        } catch (err) {
+            setIsError(true); // Set error state on failure
+            setError(err.message);
+        } finally {
+            setIsLoading(false); // Stop loading
+        }
     }, [axiosPublic]);
 
-    return [items, isLoading, isError, error];
+    // Automatically fetch items when the hook is used
+    useEffect(() => {
+        fetchItems();
+    }, [fetchItems]); // Ensure the useEffect depends on fetchItems
+
+    return [items, fetchItems, isLoading, isError, error];
 };
 
 export default useItems;

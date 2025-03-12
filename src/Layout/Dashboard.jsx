@@ -12,7 +12,7 @@ const Dashboard = () => {
     return (
         <div className="flex">
             {/* sidebar */}
-            <div className="w-1/6 bg-black">
+            <div className="bg-black">
                 <ul className="menu sticky top-8 p-4 my-8 text-md font-bold text-white">
 
                     <li><NavLink to="/dashboard/orders">

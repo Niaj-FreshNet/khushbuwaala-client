@@ -1,34 +1,32 @@
 import React from 'react';
 import { Button } from 'antd';
-import BannerDesktop from '../../assets/Banner1.webp'; // Desktop Banner
-import BannerMobile from '../../assets/Banner2.webp'; // Mobile Banner
 
-const ShopBanner = ({ heading, text, button}) => {
+const ShopBanner = ({ heading, text, button, bannerDesktop, bannerMobile }) => {
     return (
-        <div className="mt-16 relative banner-container md:h-[460px] overflow-hidden">
-            <div className="w-full md:w-full mx-auto"> {/* Set width for mobile and desktop */}
+        <div className="mt-16 relative md:h-[360px] overflow-hidden">
+            <div className="w-full md:w-full mx-auto">
                 <picture>
-                    <source media="(min-width: 768px)" srcSet={BannerDesktop} />
+                    <source media="(min-width: 768px)" srcSet={bannerDesktop} />
                     <img
-                        src={BannerMobile} // Fallback image for mobile
+                        src={bannerMobile} // Fallback image for mobile
                         alt="Banner"
                         className="w-full h-full object-cover transition-opacity duration-300 ease-in-out"
                     />
                 </picture>
-                <div className="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-center items-center text-center p-6">
-                    <h1 className="text-white text-4xl md:text-5xl font-extrabold tracking-wide leading-tight drop-shadow-lg">
+                <div className="absolute inset-0 bg-gray-600 bg-opacity-60 flex flex-col justify-center items-center text-center p-6">
+                    <h1 className="text-white text-3xl md:text-5xl font-extrabold tracking-widest leading-tight drop-shadow-lg">
                         {heading}
                     </h1>
-                    <p className="text-white text-lg md:text-xl mt-4 max-w-xl drop-shadow-md">
+                    <p className="absolute bottom-2 text-white text-md md:text-xl mt-4 px-6 md:px-0 max-w-2xl drop-shadow-md">
                         {text}
                     </p>
-                    <Button 
-                        className="mt-6 px-8 py-3 bg-red-600 text-white font-semibold transition-transform duration-200 ease-in-out hover:scale-105 hover:bg-red-700 rounded-lg" 
+                    {/* <Button 
+                        className="absolute bottom-10 mt-6 px-8 py-3 bg-red-600 text-white font-semibold transition-transform duration-200 ease-in-out hover:scale-105 hover:bg-red-700 rounded-lg" 
                         type="primary" 
                         size="large"
                     >
                         {button}
-                    </Button>
+                    </Button> */}
                 </div>
             </div>
         </div>

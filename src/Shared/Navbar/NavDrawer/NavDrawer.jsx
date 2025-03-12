@@ -1,28 +1,68 @@
 import React from 'react';
 import { Menu } from 'antd';
-import { useNavigate } from 'react-router-dom';
-import { HomeOutlined, ShopOutlined, GiftOutlined, InfoCircleOutlined } from '@ant-design/icons';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { HomeOutlined, ShopOutlined, GiftOutlined, InfoCircleOutlined, HeartTwoTone, UserOutlined } from '@ant-design/icons';
 import { MdOutlineInventory2 } from 'react-icons/md';
+import { RxDropdownMenu } from 'react-icons/rx';
+import { ImNewTab } from 'react-icons/im';
+import { CiLocationArrow1 } from 'react-icons/ci';
+import { TbLocation } from 'react-icons/tb';
 
-function getItem(label, key, icon, path) {
-    return { key, icon, label, path };
+function getItem(label, key, icon, path, children, isMenu = false) {
+    return {
+        key,
+        icon,
+        children,
+        label: isMenu ? (
+            <span className="hover:text-red-600 transition-colors duration-300">
+                {label}
+            </span>
+        ) : (
+            <NavLink to={path} className="hover:text-red-600 transition-colors duration-300">
+                {label}
+            </NavLink>
+        ),
+    };
 }
 
 const items = [
     getItem('Home', '1', <HomeOutlined />, '/'),
-    getItem('New In', '2', <ShopOutlined />, '/shop'),
-    getItem('Best Perfumes', '3', <MdOutlineInventory2 />, '/shop/best-perfumes'),
-    getItem('Gifts & Packages', '4', <GiftOutlined />, '/shop/gifts'),
-    getItem('About', '5', <InfoCircleOutlined />, '/about'),
+    getItem('New In', '2', <ImNewTab />, '/new-arrivals'),
+    getItem('All Collection', '3', <MdOutlineInventory2 />, '/shop'),
+    getItem('Menu', '4', <RxDropdownMenu />, null, [  // No link for Menu
+        getItem('Inspired Perfume Oils', '4-1', null, '/inspired-perfume-oil'),
+        getItem('Oriental & Arabian Attar', '4-2', null, '/oriental-attar'),
+        getItem('Artificial Oud', '4-3', null, '/artificial-oud'),
+        getItem('Natural Collections', '4-4', null, '/natural-attar'),
+    ], true), // Pass true to indicate this is the main menu item with no link
+    getItem('For Women', '5', <HeartTwoTone />, '/womens-perfume'),
+    getItem('Gifts & Packages', '6', <GiftOutlined />, '/gifts-and-packages'),
+    getItem('Track Order', '7', <TbLocation />, '/track-order'),
+    getItem('Contact Us', '8', <InfoCircleOutlined />, '/contact'),
 ];
 
 const NavDrawer = ({ onMenuClick }) => {
     const navigate = useNavigate();
 
-    const handleMenuClick = (menuItem) => {
-        if (menuItem && menuItem.path) {
-            navigate(menuItem.path);
-            onMenuClick(); // Close the drawer after navigating
+    const handleMenuClick = (key) => {
+        const findItem = (items, key) => {
+            for (const item of items) {
+                if (item.key === key) {
+                    return item;
+                }
+                if (item.children) {
+                    const found = findItem(item.children, key);
+                    if (found) {
+                        return found;
+                    }
+                }
+            }
+        };
+
+        const menuItem = findItem(items, key);
+        if (menuItem && menuItem.label.props.to) {
+            navigate(menuItem.label.props.to);
+            onMenuClick();
         }
     };
 
@@ -30,10 +70,7 @@ const NavDrawer = ({ onMenuClick }) => {
         <Menu
             mode="inline"
             items={items}
-            onClick={({ key }) => {
-                const menuItem = items.find(i => i.key === key);
-                if (menuItem) handleMenuClick(menuItem);
-            }}
+            onClick={({ key }) => handleMenuClick(key)}
             style={{ height: '100%' }}
         />
     );

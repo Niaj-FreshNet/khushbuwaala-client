@@ -1,125 +1,74 @@
-// import React, { useState, useRef, useEffect } from 'react';
-// import { useLocation, useParams } from 'react-router-dom';
-// import Breadcrumbs from '../BreadCrumbs/BreadCrumbs';
-// import ProductAccordion from '../ProductAccordion/ProductAccordion';
-// import ProductDetails from '../ProductDetails/ProductDetails';
-// import ProductGallery from '../ProductGallery/ProductGallery';
-// import RecentlyViewed from '../RecentlyViewed/RecentlyViewed';
-// import RelatedProduct from '../RelatedProduct/RelatedProduct';
-// import { PiSquaresFour } from 'react-icons/pi';
-// import Card1 from '../../../assets/Card1.jpg';
-// import Card2 from '../../../assets/Card2.jpg';
-
-// const ProductPage = () => {
-//     const { state } = useLocation(); // Get the state from the navigate call
-//     const { productSlug } = useParams(); // Get the slug from the URL params
-//     const [product, setProduct] = useState(state?.product || {}); // Initialize state with the product passed via state or an empty object
-//     const [selectedSize, setSelectedSize] = useState('');
-//     const [activeKey, setActiveKey] = useState(null);
-//     const descriptionPanelRef = useRef(null);
-
-//     useEffect(() => {
-//         if (!product.name) {
-//             // Fetch the product by slug if it's not passed via state
-//             // Replace with your actual fetching logic
-//             fetch(`/api/products/${productSlug}`)
-//                 .then((response) => response.json())
-//                 .then((data) => setProduct(data))
-//                 .catch((error) => console.error('Error fetching product:', error));
-//         }
-//     }, [productSlug, product.name]);
-
-//     if (!product.name) {
-//         return <div>Loading...</div>;
-//     }
-
-//     console.log('Product in ProductPage:', product);
-
-//     if (!selectedSize && product.sizes?.length > 0) {
-//         setSelectedSize(product.sizes[0]);
-//     }
-
-//     const handleReadMoreClick = () => {
-//         descriptionPanelRef.current?.scrollIntoView({ behavior: 'smooth' });
-//         setActiveKey('1');
-//     };
-
-//     return (
-//         <div className="max-w-screen-2xl mx-auto mt-9 lg:mt-8 mb-8 py-8">
-//             <div className="bg-gray-100 mx-auto flex justify-between px-6 lg:px-20 py-2 lg:py-4">
-//                 <Breadcrumbs />
-//                 <PiSquaresFour href="/shop" size={24} cursor="pointer" />
-//             </div>
-//             <div className="max-w-screen-xl px-4 mx-auto">
-//                 <div className="flex flex-col lg:flex-row justify-between gap-4 mt-8">
-//                     <div className="lg:w-1/2">
-//                         <ProductGallery
-//                             images={product.images || [
-//                                 { imageSrc: Card1, imageThumbSrc: Card1, alt: 'Card 1' },
-//                                 { imageSrc: Card2, imageThumbSrc: Card2, alt: 'Card 2' }
-//                             ]}
-//                             productName={product.name}
-//                         />
-//                     </div>
-//                     <div className="lg:w-1/2 mt-2 lg:mt-0 flex flex-col lg:pr-8">
-//                         <ProductDetails
-//                             product={product}
-//                             selectedSize={selectedSize}
-//                             setSelectedSize={setSelectedSize}
-//                             onReadMore={handleReadMoreClick}
-//                         />
-//                         <ProductAccordion
-//                             product={product}
-//                             activeKey={activeKey}
-//                             setActiveKey={setActiveKey}
-//                             descriptionPanelRef={descriptionPanelRef}
-//                         />
-//                     </div>
-//                 </div>
-//             </div>
-//             <RelatedProduct />
-//             <RecentlyViewed />
-//         </div>
-//     );
-// };
-
-// export default ProductPage;
-
 import React, { useState, useRef, useEffect } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { NavLink, useLoaderData, useLocation, useParams } from 'react-router-dom';
 import Breadcrumbs from '../BreadCrumbs/BreadCrumbs';
 import ProductAccordion from '../ProductAccordion/ProductAccordion';
 import ProductDetails from '../ProductDetails/ProductDetails';
 import ProductGallery from '../ProductGallery/ProductGallery';
-import RecentlyViewed from '../RecentlyViewed/RecentlyViewed';
 import RelatedProduct from '../RelatedProduct/RelatedProduct';
 import { PiSquaresFour } from 'react-icons/pi';
-import Card1 from '../../../assets/Card1.jpg';
-import Card2 from '../../../assets/Card2.jpg';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 import useItem from '../../../Hooks/useItems';
+import { Helmet } from 'react-helmet-async';
+import ReactPixel from 'react-facebook-pixel';
+
 
 const ProductPage = () => {
-    const { state } = useLocation(); // Get the state from the navigate call
-    const { productSlug } = useParams(); // Get the slug from the URL params
+    const product = useLoaderData();
+    // const  { name, _id } = product;
+    // console.log(name, _id)
+    const { state } = useLocation();
+    const { productSlug } = useParams();
     const [activeKey, setActiveKey] = useState(null);
     const descriptionPanelRef = useRef(null);
-    
-    // Use the custom hook to retrieve all items
+
     const [items, refetch, isLoading, isError, error] = useItem();
 
-    // Find the product by slug
-    const product = state?.product || items.find(item => item.slug === productSlug) || {};
+    // const product = state?.product || items.find(item => item.slug === productSlug) || {};
 
-    // Handle cases when product data is still loading or missing
+    useEffect(() => {
+        ReactPixel.track('ViewContent', {
+            content_name: product.name,
+            content_ids: [product._id],
+            content_type: 'product',
+            value: product.price,
+            currency: 'BDT',
+        });
+    }, [product]);
+
+
     useEffect(() => {
         window.scrollTo(0, 0);
         if (!state && !product.name && !isLoading) {
-            refetch(); // Trigger refetch if the product wasn't found in initial load
+            refetch();
         }
     }, [productSlug, state, product, isLoading, refetch]);
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return (
+            <div className="max-w-screen-2xl mx-auto mt-9 lg:mt-8 mb-8 py-8">
+                <div className="bg-gray-100 mx-auto flex justify-between px-6 lg:px-20 py-2 lg:py-4">
+                    <Skeleton width={150} height={30} />
+                    <Skeleton circle width={30} height={30} />
+                </div>
+                <div className="max-w-screen-xl px-4 mx-auto">
+                    <div className="flex flex-col lg:flex-row justify-between gap-4 mt-8">
+                        <div className="lg:w-1/2">
+                            <Skeleton height={400} />
+                        </div>
+                        <div className="lg:w-1/2 mt-2 lg:mt-0 flex flex-col lg:pr-8">
+                            <Skeleton height={40} width="80%" />
+                            <Skeleton count={3} height={20} style={{ marginTop: '1rem' }} />
+                            <Skeleton height={200} style={{ marginTop: '2rem' }} />
+                        </div>
+                    </div>
+                </div>
+                <div className="max-w-screen-xl px-4 mx-auto mt-8">
+                    <Skeleton height={40} width="50%" />
+                    <Skeleton height={300} style={{ marginTop: '1rem' }} />
+                </div>
+            </div>
+        );
     }
 
     if (isError) {
@@ -130,9 +79,6 @@ const ProductPage = () => {
         return <div>Product not found</div>;
     }
 
-
-    console.log('Product in ProductPage:', product);
-
     const handleReadMoreClick = () => {
         descriptionPanelRef.current?.scrollIntoView({ behavior: 'smooth' });
         setActiveKey('1');
@@ -140,27 +86,41 @@ const ProductPage = () => {
 
     return (
         <div className="max-w-screen-2xl mx-auto mt-9 lg:mt-8 mb-8 py-8">
+
+            {/* Dynamic Metadata */}
+            <Helmet>
+                <title>{product.name} | KhushbuWaala</title>
+                <meta name="description" content={product.description || 'Premium product available at KhushbuWaala.'} />
+                <meta name="keywords" content={`${product.name}, KhushbuWaala, Perfume, Attars, Fragrance`} />
+                <link rel="canonical" href={`https://khushbuwaala.com/product/${productSlug}`} />
+
+                {/* Open Graph Meta Tags */}
+                <meta property="og:title" content={`${product.name} | KhushbuWaala`} />
+                <meta property="og:description" content={product.description || 'Premium product available at KhushbuWaala.'} />
+                <meta property="og:image" content={product.imageUrl || 'https://khushbuwaala.com/assets/n11.png'} />
+                <meta property="og:type" content="product" />
+                <meta property="og:url" content={`https://khushbuwaala.com/product/${productSlug}`} />
+
+                {/* Twitter Meta Tags */}
+                <meta name="twitter:title" content={`${product.name} | KhushbuWaala`} />
+                <meta name="twitter:description" content={product.description || 'Premium product available at KhushbuWaala.'} />
+                <meta name="twitter:image" content={product.imageUrl || 'https://khushbuwaala.com/assets/n11.png'} />
+                <meta name="twitter:card" content="summary_large_image" />
+            </Helmet>
+
             <div className="bg-gray-100 mx-auto flex justify-between px-6 lg:px-20 py-2 lg:py-4">
                 <Breadcrumbs product={product} />
-                <PiSquaresFour href="/shop" size={24} cursor="pointer" />
+                <NavLink to="/shop">
+                    <PiSquaresFour size={24} cursor="pointer" />
+                </NavLink>
             </div>
             <div className="max-w-screen-xl px-4 mx-auto">
                 <div className="flex flex-col lg:flex-row justify-between gap-4 mt-8">
                     <div className="lg:w-1/2">
-                        <ProductGallery
-                            // images={product.images || [
-                            //     { imageSrc: Card1, imageThumbSrc: Card1, alt: 'Card 1' },
-                            //     { imageSrc: Card2, imageThumbSrc: Card2, alt: 'Card 2' }
-                            // ]}
-                            // productName={product.name}
-                            product={product}
-                        />
+                        <ProductGallery product={product} />
                     </div>
-                    <div className="lg:w-1/2 mt-2 lg:mt-0 flex flex-col lg:pr-8">
-                        <ProductDetails
-                            product={product}
-                            onReadMore={handleReadMoreClick}
-                        />
+                    <div className="mt-2 lg:mt-0 lg:w-1/2 flex flex-col lg:pr-8">
+                        <ProductDetails product={product} onReadMore={handleReadMoreClick} />
                         <ProductAccordion
                             product={product}
                             activeKey={activeKey}
@@ -170,8 +130,9 @@ const ProductPage = () => {
                     </div>
                 </div>
             </div>
-            <RelatedProduct product={product} />
-            <RecentlyViewed />
+            <div>
+                <RelatedProduct product={product} />
+            </div>
         </div>
     );
 };

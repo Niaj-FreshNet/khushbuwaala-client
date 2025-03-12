@@ -1,0 +1,177 @@
+===============================================================================
+EXTENSION NAME : linecount
+EXTENSION VERSION : 0.1.7
+-------------------------------------------------------------------------------
+count time : 2024-12-22 21:10:27
+count workspace : d:\PROJECTS\khushbuwaala-client
+total files : 165
+total code lines : 17204
+total comment lines : 1208
+total blank lines : 918
+
+.env.local, code is 1, comment is 0, blank is 0.
+.firebase\hosting..cache, code is 146, comment is 0, blank is 0.
+.firebase\hosting.ZGlzdA.cache, code is 32, comment is 0, blank is 0.
+.firebaserc, code is 5, comment is 0, blank is 0.
+.gitignore, code is 14, comment is 9, blank is 2.
+dist\assets\ajax-loader-BcnMEykj.gif, it is a binary file.
+dist\assets\banner1-5yBt8HDm.webp, it is a binary file.
+dist\assets\banner2-CArk-6Yz.webp, it is a binary file.
+dist\assets\Category1-D-ouTI7m.webp, it is a binary file.
+dist\assets\Category2-Dycu4NpC.webp, it is a binary file.
+dist\assets\Category3-by9nQubb.webp, it is a binary file.
+dist\assets\Category4-De8ufL3r.webp, it is a binary file.
+dist\assets\favicon-DrXQ9qzN.png, it is a binary file.
+dist\assets\home1-Cw01tDMo.webp, it is a binary file.
+dist\assets\home2-Bds3l68r.webp, it is a binary file.
+dist\assets\index-B9m_ej3X.js, code is 406, comment is 69, blank is 8.
+dist\assets\index-D5JHIdRO.css, code is 1, comment is 1, blank is 0.
+dist\assets\KhushbuWaala-DyiHBXIx.webp, it is a binary file.
+dist\assets\n1-D3FsqOwv.webp, it is a binary file.
+dist\assets\n11-BGS2UA1F.webp, it is a binary file.
+dist\assets\n111-C2kE3uAf.webp, it is a binary file.
+dist\assets\n2-Eem3_Aka.webp, it is a binary file.
+dist\assets\n21-Bw9k8pTp.webp, it is a binary file.
+dist\assets\n3-BYrQXb_0.webp, it is a binary file.
+dist\assets\n31-D4-Eb0g_.webp, it is a binary file.
+dist\assets\n4-D6kqfiar.webp, it is a binary file.
+dist\assets\nF-CCGvnxVL.webp, it is a binary file.
+dist\assets\nFF-BJo9obpo.webp, it is a binary file.
+dist\assets\nG-x7kzZ2T6.jpg, code is 136, comment is 233, blank is 0.
+dist\assets\paymentMethod-C6F4oAz1.svg, code is 7, comment is 0, blank is 0.
+dist\assets\r3-boFuCLl1.webp, it is a binary file.
+dist\assets\r4-B59H_G9q.webp, it is a binary file.
+dist\assets\r5-CSaztr4Y.webp, it is a binary file.
+dist\assets\r6-CAK8pmyJ.webp, it is a binary file.
+dist\assets\slick-BlzDm7g2.svg, code is 13, comment is 0, blank is 1.
+dist\index.html, code is 15, comment is 0, blank is 0.
+dist\vite.svg, code is 1, comment is 0, blank is 0.
+eslint.config.js, code is 37, comment is 0, blank is 1.
+firebase.json, code is 15, comment is 0, blank is 1.
+index.html, code is 14, comment is 0, blank is 0.
+package-lock.json, code is 9125, comment is 0, blank is 79.
+package.json, code is 46, comment is 0, blank is 0.
+postcss.config.js, code is 6, comment is 0, blank is 0.
+public\vite.svg, code is 1, comment is 0, blank is 0.
+README.md, code is 5, comment is 2, blank is 3.
+src\App.css, code is 37, comment is 0, blank is 5.
+src\App.jsx, code is 32, comment is 0, blank is 3.
+src\assets\banner1.webp, it is a binary file.
+src\assets\banner2.webp, it is a binary file.
+src\assets\Blucheez-Red_Blucheez_logo.svg, code is 1, comment is 0, blank is 0.
+src\assets\Card1.jpg, it is a binary file.
+src\assets\Card2.jpg, it is a binary file.
+src\assets\Category1.webp, it is a binary file.
+src\assets\Category2.webp, it is a binary file.
+src\assets\Category3.webp, it is a binary file.
+src\assets\Category4.webp, it is a binary file.
+src\assets\favicon.png, it is a binary file.
+src\assets\home1.webp, it is a binary file.
+src\assets\home2.webp, it is a binary file.
+src\assets\KhushbuWaala.webp, it is a binary file.
+src\assets\n1.webp, it is a binary file.
+src\assets\n11.webp, it is a binary file.
+src\assets\n111.webp, it is a binary file.
+src\assets\n2.webp, it is a binary file.
+src\assets\n21.webp, it is a binary file.
+src\assets\n3.webp, it is a binary file.
+src\assets\n31.webp, it is a binary file.
+src\assets\n4.webp, it is a binary file.
+src\assets\nF.webp, it is a binary file.
+src\assets\nFF.webp, it is a binary file.
+src\assets\nG.jpg, code is 136, comment is 233, blank is 0.
+src\assets\paymentMethod.svg, code is 7, comment is 0, blank is 0.
+src\assets\r2.webp, it is a binary file.
+src\assets\r3.webp, it is a binary file.
+src\assets\r4.webp, it is a binary file.
+src\assets\r5.webp, it is a binary file.
+src\assets\r6.webp, it is a binary file.
+src\assets\ShowCase1.jpg, it is a binary file.
+src\assets\ShowCase2.jpg, it is a binary file.
+src\Cart\CartContext.jsx, code is 66, comment is 16, blank is 17.
+src\Components\Banner\Banner.css, code is 35, comment is 1, blank is 5.
+src\Components\Banner\Banner.jsx, code is 34, comment is 1, blank is 3.
+src\Components\CategoryCard\CategoryCard.css, code is 15, comment is 1, blank is 5.
+src\Components\CategoryCard\CategoryCard.jsx, code is 24, comment is 1, blank is 2.
+src\Components\Filter\Filter.jsx, code is 163, comment is 9, blank is 15.
+src\Components\Notice\Notice.jsx, code is 29, comment is 2, blank is 5.
+src\Components\ProductCard\ProductCard.css, code is 54, comment is 0, blank is 10.
+src\Components\ProductCard\ProductCard.jsx, code is 119, comment is 31, blank is 16.
+src\Components\ShopBanner\ShopBanner.jsx, code is 28, comment is 7, blank is 3.
+src\Components\ShowCaseCard\ShowCaseCard.jsx, code is 16, comment is 0, blank is 2.
+src\Components\SocialIcons\SocialIcons.jsx, code is 58, comment is 6, blank is 3.
+src\Components\Sort\Sort.jsx, code is 58, comment is 7, blank is 7.
+src\FIrebase\firebase.config.js, code is 10, comment is 5, blank is 2.
+src\Hooks\useAdmin.jsx, code is 0, comment is 0, blank is 0.
+src\Hooks\useAxiosPublic.jsx, code is 11, comment is 3, blank is 3.
+src\Hooks\useAxiosSecure.jsx, code is 0, comment is 0, blank is 0.
+src\Hooks\useItems.jsx, code is 27, comment is 40, blank is 19.
+src\Hooks\useOrders.jsx, code is 17, comment is 3, blank is 5.
+src\Hooks\usePayments.jsx, code is 0, comment is 0, blank is 0.
+src\Hooks\useSales.jsx, code is 0, comment is 0, blank is 0.
+src\Hooks\useUsers.jsx, code is 0, comment is 0, blank is 0.
+src\index.css, code is 3, comment is 0, blank is 0.
+src\Layout\Dashboard.jsx, code is 64, comment is 5, blank is 6.
+src\Layout\Main.jsx, code is 18, comment is 0, blank is 2.
+src\main.jsx, code is 21, comment is 0, blank is 2.
+src\Pages\AddToCart\CartDrawer\CartDrawer.jsx, code is 98, comment is 3, blank is 11.
+src\Pages\AddToCart\CartPage\CartPage.jsx, code is 173, comment is 3, blank is 8.
+src\Pages\ArtificialOudPage\ArtificialOudPage.jsx, code is 33, comment is 0, blank is 3.
+src\Pages\CategoryWise\CategoryWisePage\CategoryWisePage.jsx, code is 0, comment is 0, blank is 0.
+src\Pages\CategoryWise\CategoryWiseProducts\CategoryWiseProducts.jsx, code is 134, comment is 27, blank is 24.
+src\Pages\CheckOut\CheckOutPage\CheckOutPage.jsx, code is 446, comment is 8, blank is 32.
+src\Pages\CheckOut\CheckOutPage\test.jsx, code is 0, comment is 205, blank is 18.
+src\Pages\Contact\Contact.jsx, code is 41, comment is 0, blank is 6.
+src\Pages\Dashboard\AddItem\AddItem.jsx, code is 468, comment is 22, blank is 52.
+src\Pages\Dashboard\AllItems\AllItems.jsx, code is 193, comment is 5, blank is 18.
+src\Pages\Dashboard\EditItem\EditItem.jsx, code is 524, comment is 26, blank is 58.
+src\Pages\Dashboard\Orders\OrderDetails.jsx, code is 72, comment is 5, blank is 18.
+src\Pages\Dashboard\Orders\OrderReciept.jsx, code is 202, comment is 6, blank is 16.
+src\Pages\Dashboard\Orders\Orders.jsx, code is 325, comment is 21, blank is 30.
+src\Pages\Dashboard\Reports\Reports.jsx, code is 7, comment is 0, blank is 3.
+src\Pages\Dashboard\Sales\Sales.jsx, code is 7, comment is 0, blank is 3.
+src\Pages\ForWomenPage\ForWomenPage.jsx, code is 34, comment is 0, blank is 3.
+src\Pages\GiftsAndPackagesPage\GiftsAndPackagesPage.jsx, code is 33, comment is 0, blank is 3.
+src\Pages\Home\BestSellers\BestSellers.jsx, code is 131, comment is 10, blank is 13.
+src\Pages\Home\CarouselSlider\CarouselSlider.css, code is 0, comment is 0, blank is 0.
+src\Pages\Home\CarouselSlider\CarouselSlider.jsx, code is 25, comment is 2, blank is 2.
+src\Pages\Home\Category\Category.jsx, code is 43, comment is 0, blank is 2.
+src\Pages\Home\HomePage\HomePage.jsx, code is 91, comment is 11, blank is 4.
+src\Pages\Home\Products\Products.jsx, code is 14, comment is 0, blank is 2.
+src\Pages\Home\ProductSlide\InspiredPerfumeProduct.jsx, code is 131, comment is 9, blank is 13.
+src\Pages\Home\ProductSlide\OrientalProduct.jsx, code is 131, comment is 10, blank is 13.
+src\Pages\Home\ProductSlide\OudProduct.jsx, code is 132, comment is 10, blank is 13.
+src\Pages\Home\Reviews\Reviews.jsx, code is 66, comment is 1, blank is 4.
+src\Pages\Home\Services\Services.jsx, code is 88, comment is 4, blank is 8.
+src\Pages\Home\ShowCase\ShowCase.css, code is 25, comment is 0, blank is 5.
+src\Pages\Home\ShowCase\ShowCase.jsx, code is 36, comment is 0, blank is 3.
+src\Pages\Home\Subscribe\Subscribe.jsx, code is 31, comment is 0, blank is 2.
+src\Pages\InspiredPefumeOilPage\InspiredPefumeOilPage.jsx, code is 33, comment is 0, blank is 3.
+src\Pages\NaturalPage\NaturalPage.jsx, code is 33, comment is 0, blank is 3.
+src\Pages\NewIn\NewInPage\NewInPage.jsx, code is 34, comment is 0, blank is 3.
+src\Pages\OrientalPage\OrientalPage.jsx, code is 33, comment is 0, blank is 3.
+src\Pages\ProductPage\BreadCrumbs\BreadCrumbs.jsx, code is 21, comment is 2, blank is 4.
+src\Pages\ProductPage\ProductAccordion\ProductAccordion.jsx, code is 87, comment is 5, blank is 11.
+src\Pages\ProductPage\ProductDetails\ProductDetails.jsx, code is 165, comment is 15, blank is 23.
+src\Pages\ProductPage\ProductGallery\ProductGallery.jsx, code is 97, comment is 23, blank is 16.
+src\Pages\ProductPage\ProductPage\ProductPage.jsx, code is 91, comment is 3, blank is 10.
+src\Pages\ProductPage\RecentlyViewed\RecentlyViewed.jsx, code is 17, comment is 1, blank is 2.
+src\Pages\ProductPage\RelatedProduct\RelatedProduct.jsx, code is 30, comment is 4, blank is 5.
+src\Pages\Search\SearchDrawer\SearchDrawer.jsx, code is 156, comment is 9, blank is 22.
+src\Pages\Shop\ShopPage\ShopPage.jsx, code is 33, comment is 0, blank is 3.
+src\Pages\Shop\ShopProducts\ShopProducts.jsx, code is 165, comment is 29, blank is 26.
+src\Pages\ThankYou\ThankYouPage\test.jsx, code is 76, comment is 3, blank is 12.
+src\Pages\ThankYou\ThankYouPage\ThankYouPage.jsx, code is 302, comment is 5, blank is 42.
+src\Pages\TrackOrder\TrackOrder.jsx, code is 182, comment is 5, blank is 22.
+src\Pages\Wishlist\Wishlist.jsx, code is 113, comment is 12, blank is 13.
+src\Routes\Routes.jsx, code is 107, comment is 1, blank is 2.
+src\Shared\BottomBar\BottomBar.jsx, code is 68, comment is 5, blank is 16.
+src\Shared\Footer\Footer.jsx, code is 125, comment is 3, blank is 11.
+src\Shared\Navbar\DropDownMenu.jsx, code is 33, comment is 0, blank is 3.
+src\Shared\Navbar\Navbar.css, code is 6, comment is 0, blank is 0.
+src\Shared\Navbar\Navbar.jsx, code is 225, comment is 2, blank is 23.
+src\Shared\Navbar\NavDrawer\NavDrawer.jsx, code is 72, comment is 2, blank is 7.
+src\Wishlist\WishlistContext.jsx, code is 37, comment is 4, blank is 7.
+tailwind.config.js, code is 15, comment is 1, blank is 0.
+vite.config.js, code is 5, comment is 1, blank is 1.
+===============================================================================

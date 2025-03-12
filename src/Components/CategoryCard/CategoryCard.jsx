@@ -1,22 +1,20 @@
 import React from 'react';
 import { SfLink } from '@storefront-ui/react';
-import Category1 from '../../assets/Category1.webp'; // Category image
-// import Category2 from '../../assets/Category2.webp'; // Category image
 import './CategoryCard.css'; // Import custom styles
 
-const CategoryCard = () => {
+const CategoryCard = ({ CategoryImage, CategoryName, CategoryLink }) => {
     return (
-        <div className="border border-neutral-200 hover:shadow-lg max-w-[360px] overflow-hidden"> {/* Set overflow to hidden */}
+        <div className="category-card border border-neutral-200 hover:shadow-lg  overflow-hidden">
             <div className="relative">
-                <SfLink className="block">
+                <SfLink href={CategoryLink} className="block">
                     <img
-                        src={Category1}
+                        src={CategoryImage}
                         alt="Category"
-                        className="w-full h-[420px] md:h-[520px] object-cover transition-opacity duration-300 ease-in-out" // Ensure proper image display
+                        className="w-full h-[420px] md:h-[520px] object-cover transition-opacity duration-300 ease-in-out"
                     />
-                    <div className="absolute inset-0 flex items-center justify-center text-center bg-black bg-opacity-20">
-                        <p className="text-xl font-bold text-white">
-                            Premium Perfumes
+                    <div className="overlay absolute inset-0 flex items-center justify-center text-center bg-black bg-opacity-20 transition-opacity duration-300">
+                        <p className="category-name text-2xl md:text-3xl font-bold text-white px-4 text-shadow transition-transform duration-300">
+                            {CategoryName}
                         </p>
                     </div>
                 </SfLink>

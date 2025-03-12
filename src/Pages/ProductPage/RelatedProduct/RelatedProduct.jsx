@@ -24,7 +24,7 @@ const RelatedProduct = ({ product }) => {
 
     return (
         <div className="mt-12 px-2">
-            <h2 className="text-lg divider my-6 font-semibold">You may also like</h2>
+            <h2 className="text-lg divider my-10 font-semibold">You may also like</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-1">
                 {relatedProducts.map((relatedProduct) => (
                     <ProductCard key={relatedProduct._id} product={relatedProduct} />

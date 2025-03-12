@@ -129,6 +129,7 @@ const AddItem = () => {
                 smell: values.smell,
                 specification: values.specification,
                 description: values.description,
+                notes: values.notes,
                 stock: values.stock,
                 measurement: values.measurement,
                 origin: values.origin,
@@ -224,7 +225,7 @@ const AddItem = () => {
                         label="Section"
                         name="section"
                         rules={[{ required: false, message: 'Please select a section' }]}
-                        className="flex"
+                        className="w-48"
                     >
                         <Select defaultValue="regular">
                             <Option value="regular">Regular</Option>
@@ -250,6 +251,7 @@ const AddItem = () => {
                             <Option value="semiorganic">Semi-organic</Option>
                             <Option value="organic">Organic</Option>
                             <Option value="brand">Brand</Option>
+                            <Option value="giftsAndPackages">Gifts and Packages</Option>
                         </Select>
                     </Form.Item>
 
@@ -300,12 +302,28 @@ const AddItem = () => {
                         <Select mode="tags" placeholder="Select smell types">
                             <Option value="Corporate">Corporate</Option>
                             <Option value="Citrusy">Citrusy</Option>
+                            <Option value="Manly">Manly</Option>
+                            <Option value="Earthy">Earthy</Option>
+                            <Option value="Leathery">Leathery</Option>
+                            <Option value="Soapy">Soapy</Option>
                             <Option value="Refreshing">Refreshing</Option>
                             <Option value="Fruity">Fruity</Option>
                             <Option value="Sweet">Sweet</Option>
                             <Option value="Chocolate">Chocolate</Option>
+                            <Option value="Vanilla">Vanilla</Option>
+                            <Option value="Candy">Candy</Option>
                             <Option value="Floral">Floral</Option>
+                            <Option value="Powdery">Powdery</Option>
+                            <Option value="Bergamote">Bergamote</Option>
+                            <Option value="Lavender">Lavender</Option>
+                            <Option value="Vetiver">Vetiver</Option>
+                            <Option value="Woody">Woody</Option>
                             <Option value="Spicy">Spicy</Option>
+                            <Option value="Smooky">Smooky</Option>
+                            <Option value="Strong">Strong</Option>
+                            <Option value="Amber">Amber</Option>
+                            <Option value="Musky">Musky</Option>
+                            <Option value="Nostalgic">Nostalgic</Option>
                             <Option value="Projective">Projective</Option>
                             <Option value="Longetive">Longetive</Option>
                             <Option value="Synthetic">Synthetic</Option>
@@ -332,7 +350,15 @@ const AddItem = () => {
                     name="description"
                     rules={[{ required: true, message: 'Please enter the description' }]}
                 >
-                    <TextArea rows={4} placeholder="Product Description" />
+                    <TextArea rows={8} placeholder="Product Description" />
+                </Form.Item>
+
+                <Form.Item
+                    label="Notes"
+                    name="notes"
+                    rules={[{ required: true, message: 'Please enter the notes' }]}
+                >
+                    <TextArea rows={4} placeholder="Fragrance Notes" />
                 </Form.Item>
 
                 <div className="flex space-x-8">

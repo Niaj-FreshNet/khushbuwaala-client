@@ -58,24 +58,42 @@ const Orders = ({ products }) => {
         setIsModalVisible(false);
     };
 
-    const handleSearch = (value) => {
-        setSearchText(value);
-    };
 
     const handleSearchChange = (e) => {
         setSearchText(e.target.value);
     };
 
-// Sort and filter orders based on search text
-const filteredOrders = orders
-    .filter((order) =>
-        order._id.toLowerCase().includes(searchText.toLowerCase()) ||
-        order.cartItems.some(item =>
-            item.name.toLowerCase().includes(searchText.toLowerCase())
-        )
-    )
-    .sort((a, b) => new Date(b.orderPlacedAt) - new Date(a.orderPlacedAt)); // Sort to show the newest orders first
+    // const handleSearch = (value) => {
+    //     setSearchText(value);
+    // };
 
+    // // Sort and filter orders based on search text
+    // const filteredOrders = orders
+    //     .filter((order) =>
+    //         order._id.toLowerCase().includes(searchText.toLowerCase()) ||
+    //         order.cartItems.some(item =>
+    //             item.name.toLowerCase().includes(searchText.toLowerCase())
+    //         )
+    //     )
+    //     .sort((a, b) => new Date(b.orderPlacedAt) - new Date(a.orderPlacedAt)); // Sort to show the newest orders first
+
+    const handleSearch = (value) => {
+        setSearchText(value);
+    };
+
+    // Modify the filteredOrders to allow search by multiple fields
+    const filteredOrders = orders
+        .filter((order) =>
+            (order._id && order._id.toLowerCase().includes(searchText.toLowerCase())) || // Search by order ID
+            (order.orderId && order.orderId.toLowerCase().includes(searchText.toLowerCase())) || // Search by order ID
+            (order.shippingAddress?.name && order.shippingAddress.name.toLowerCase().includes(searchText.toLowerCase())) || // Search by customer name
+            (order.shippingAddress?.address && order.shippingAddress.address.toLowerCase().includes(searchText.toLowerCase())) || // Search by shipping address
+            order.cartItems?.some(item =>
+                (item.name && item.name.toLowerCase().includes(searchText.toLowerCase())) || // Search by item name
+                (item.size && item.size.toLowerCase().includes(searchText.toLowerCase())) // Search by item size
+            )
+        )
+        .sort((a, b) => new Date(b.orderPlacedAt) - new Date(a.orderPlacedAt)); // Sort to show the newest orders first
 
     const updateOrderStatus = async (id, currentStatus) => {
         // Define the sequence of order statuses
@@ -193,14 +211,19 @@ const filteredOrders = orders
                 shippingAddress ? (
                     <div className="flex flex-col">
                         <div className="text-left flex-grow">
-                            <strong>Name:</strong> <span className="font-semibold text-gray-600">{shippingAddress.firstName} {shippingAddress.lastName}</span><br />
+                            <strong>Name:</strong> <span className="font-semibold text-gray-600">{shippingAddress.name}</span><br />
                             <strong>Address:</strong> <span className="font-semibold text-gray-600">{shippingAddress.address}</span><br />
-                            <strong>City:</strong> <span className="font-semibold text-gray-600">{shippingAddress.city}</span><br />
-                            <strong>Phone:</strong> <span className="font-semibold text-gray-600">{shippingAddress.phone}</span>
+                            <strong>Thana:</strong> <span className="font-semibold text-gray-600">{shippingAddress.thana}</span><br />
+                            <strong>District:</strong> <span className="font-semibold text-gray-600">{shippingAddress.district}</span><br />
+                            <strong>Phone:</strong> <span className="font-semibold text-gray-600">{shippingAddress.contactNumber}</span>
                         </div>
                         <hr className="my-2" /> {/* Divider to separate sections */}
                         <div className="text-left mt-2">
-                            <strong>Billing By:</strong> <span className="font-semibold text-gray-600">{record.billingAddress?.firstName} {record.billingAddress?.lastName}</span>
+                            <strong>Billing By:</strong> <span className="font-semibold text-gray-600">{record.billingAddress?.name}</span>
+                        </div>
+                        <hr className="my-2" /> {/* Divider to separate sections */}
+                        <div className="text-left mt-2">
+                            <strong>Notes:</strong> <span className="font-semibold text-gray-600">{record.notes}</span>
                         </div>
                     </div>
                 ) : (

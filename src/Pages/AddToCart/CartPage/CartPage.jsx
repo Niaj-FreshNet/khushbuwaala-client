@@ -1,25 +1,47 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Button, Input, Row, Col } from "antd";
 import { DeleteOutlined, ShoppingCartOutlined } from '@ant-design/icons'; // Import icons
-import paymentMethod from '../../../assets/paymentMethod.png';
+import paymentMethod from '../../../assets/paymentMethod.svg';
 import { CartContext } from '../../../Cart/CartContext';
+import { FcEmptyTrash } from "react-icons/fc";
+import ReactPixel from 'react-facebook-pixel';
 
 const CartPage = () => {
     const { cartItems, updateQuantity, removeFromCart, calculateSubtotal } = useContext(CartContext);
 
-    const handleQuantityChange = (id, size, increment) => {
-        const item = cartItems.find((item) => item.id === id && item.size === size);
+    // Scroll to top on page load
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
+    const handleQuantityChange = (_id, size, increment) => {
+        const item = cartItems.find((item) => item._id === _id && item.size === size);
         if (item) {
             const newQuantity = Math.max(item.quantity + increment, 1);
-            updateQuantity(id, size, newQuantity);
+            updateQuantity(_id, size, newQuantity);
         }
+    };
+
+    const handleInitiateCheckout = () => {
+        ReactPixel.track("InitiateCheckout", {
+            value: calculateSubtotal(),
+            currency: "BDT",
+            contents: cartItems.map(item => ({
+                id: item._id,
+                quantity: item.quantity,
+                price: item.variantPrices[item.size],
+                size: item.size,
+            })),
+            content_type: "product",
+        });
+        window.location.href = '/checkout'; // Redirect to checkout page
     };
 
     return (
         <div className="max-w-screen-2xl mx-auto bg-white mt-9 lg:mt-8 py-8">
             {/* Shopping Cart Page Header */}
-            <div className="bg-black flex justify-center items-center py-2 mb-8">
-                <h2 className="text-lg font-bold text-white text-center">Shopping Cart</h2>
+            <div className="bg-black flex justify-center items-center py-0 mb-8">
+                <h2 className="text-lg pt-2 font-bold text-white text-center">Shopping Cart</h2>
             </div>
 
             <div className="max-w-screen-lg mx-auto p-3">
@@ -28,14 +50,14 @@ const CartPage = () => {
                         {/* Mobile Cart Section */}
                         <div className="block md:hidden space-y-6">
                             {cartItems.map((item) => (
-                                <div key={`${item.id}-${item.size}`} className="bg-white p-4 rounded-lg shadow-md">
+                                <div key={`${item._id}-${item.size}`} className="bg-white p-4 rounded-lg shadow-md">
                                     <div className="flex gap-4">
                                         <img src={item.primaryImage} alt={item.name} className="w-20 h-22 rounded-lg border" />
                                         <div className="flex-1 ">
                                             <h2 className="font-semibold text-lg text-gray-800">{item.name}</h2>
                                             <p className="text-gray-500 text-sm">Size: {item.size}</p>
                                             <p className="mt-2 text-gray-800 text-sm font-medium">
-                                                Tk {item.price.toFixed(2)} BDT
+                                                Tk {item.variantPrices[item.size].toFixed(2)} BDT
                                             </p>
                                         </div>
                                     </div>
@@ -45,12 +67,12 @@ const CartPage = () => {
                                                 icon={<DeleteOutlined />}
                                                 type="link"
                                                 className="text-red-500 hover:text-red-700"
-                                                onClick={() => removeFromCart(item.id, item.size)}
+                                                onClick={() => removeFromCart(item._id, item.size)}
                                             />
                                             <Button
                                                 size="small"
                                                 shape="circle"
-                                                onClick={() => handleQuantityChange(item.id, item.size, -1)}
+                                                onClick={() => handleQuantityChange(item._id, item.size, -1)}
                                                 disabled={item.quantity === 1}
                                             >
                                                 −
@@ -59,13 +81,13 @@ const CartPage = () => {
                                             <Button
                                                 size="small"
                                                 shape="circle"
-                                                onClick={() => handleQuantityChange(item.id, item.size, 1)}
+                                                onClick={() => handleQuantityChange(item._id, item.size, 1)}
                                             >
                                                 +
                                             </Button>
                                         </div>
                                         <span className="text-gray-600 text-md font-semibold">
-                                            Tk {(item.price * item.quantity).toFixed(2)} BDT
+                                            Tk {(item.variantPrices[item.size] * item.quantity).toFixed(2)} BDT
                                         </span>
                                     </div>
                                 </div>
@@ -81,29 +103,28 @@ const CartPage = () => {
                                 <Col span={4}>Total</Col>
                             </Row>
                             {cartItems.map((item) => (
-                                <Row key={`${item.id}-${item.size}`} gutter={[16, 16]} className="py-6 px-6 border-b">
-                                    <Col span={10} className="flex items-center gap-4">
+                                <Row key={`${item._id}-${item.size}`} gutter={[16, 16]} className="py-6 px-6 border-b">
+                                    <Col span={10} className="flex items-start gap-4">
                                         <img src={item.primaryImage} alt={item.name} className="w-24 h-26 rounded-lg border shadow-sm" />
                                         <div>
-                                            <h2 className="font-semibold text-lg text-gray-800">{item.name}</h2>
-                                            <p className="text-gray-500">Color: {item.color}</p>
+                                            <h2 className="font-semibold text-base text-gray-800">{item.name}</h2>
                                             <p className="text-gray-500">Size: {item.size}</p>
                                         </div>
                                     </Col>
-                                    <Col span={4} className="text-gray-800 items-center flex text-md font-medium">
-                                        Tk {item.price.toFixed(2)} BDT
+                                    <Col span={4} className="text-gray-800 items-center flex text-md">
+                                        Tk {item.variantPrices[item.size].toFixed(2)} BDT
                                     </Col>
                                     <Col span={6} className="flex items-center gap-3">
                                         <Button
                                             icon={<DeleteOutlined />}
                                             type="link"
                                             className="text-red-500 hover:text-red-700"
-                                            onClick={() => removeFromCart(item.id, item.size)}
+                                            onClick={() => removeFromCart(item._id, item.size)}
                                         />
                                         <Button
                                             size="small"
                                             shape="circle"
-                                            onClick={() => handleQuantityChange(item.id, item.size, -1)}
+                                            onClick={() => handleQuantityChange(item._id, item.size, -1)}
                                             disabled={item.quantity === 1}
                                         >
                                             −
@@ -112,13 +133,13 @@ const CartPage = () => {
                                         <Button
                                             size="small"
                                             shape="circle"
-                                            onClick={() => handleQuantityChange(item.id, item.size, 1)}
+                                            onClick={() => handleQuantityChange(item._id, item.size, 1)}
                                         >
                                             +
                                         </Button>
                                     </Col>
                                     <Col span={4} className="text-gray-800 items-center flex text-md font-semibold">
-                                        Tk {(item.price * item.quantity).toFixed(2)} BDT
+                                        Tk {(item.variantPrices[item.size] * item.quantity).toFixed(2)} BDT
                                     </Col>
                                 </Row>
                             ))}
@@ -135,7 +156,7 @@ const CartPage = () => {
                                         Apply
                                     </Button>
                                 </div>
-                                <div className="px-6 py-4">
+                                <div className="p-4">
                                     <img src={paymentMethod} alt="paymentMethod" />
                                 </div>
                             </div>
@@ -149,7 +170,7 @@ const CartPage = () => {
                                 <p className="text-sm text-gray-400 mb-2">Taxes and shipping calculated at checkout.</p>
                                 <p className="text-xs text-gray-400 mb-4">All charges are billed in BDT. While the content of your cart is currently displayed in BDT, the checkout will use BDT at the most current exchange rate.</p>
                                 <Button type="primary" size="large" className="w-full bg-red-600 hover:bg-red-500 border-none py-3 font-semibold"
-                                    onClick={() => window.location.href = '/checkout'}>
+                                    onClick={handleInitiateCheckout}>
                                     Check Out
                                 </Button>
                             </div>
@@ -158,11 +179,11 @@ const CartPage = () => {
                 ) : (
                     // Empty Cart Section
                     <div className="flex flex-col items-center justify-center my-24">
-                        <ShoppingCartOutlined style={{ fontSize: '64px', color: '#999' }} />
+                        <FcEmptyTrash className="w-48 h-48 mb-4 opacity-50" />
                         <h2 className="text-2xl font-bold text-gray-600 mt-4">YOUR CART IS EMPTY.</h2>
                         <p className="text-sm text-gray-500 mt-2 text-center">
                             Before proceeding to checkout, you must add some products to your shopping cart.<br />
-                            You will find a lot of interesting products on our "Shop" page.
+                            You will find a lot of interesting products on our "All Collection" page.
                         </p>
                         <Button
                             type="primary"

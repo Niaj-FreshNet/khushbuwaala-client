@@ -1,12 +1,20 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { MdArrowDropDown, MdArrowDropUp } from 'react-icons/md';
-import { Button, Checkbox, Input, Radio, Form, message } from 'antd';
+import { Button, Checkbox, Input, Radio, Form, message, Tag, Skeleton } from 'antd';
 import { CheckCircleOutlined } from '@ant-design/icons';
 import useOrders from '../../../Hooks/useOrders';
+import OrderReciept from '../../Dashboard/Orders/OrderReciept';
 
 const ThankYouPage = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isReceiptModalVisible, setIsReceiptModalVisible] = useState(false);
+    const [selectedOrder, setSelectedOrder] = useState(null);
+
+    // Scroll to top on page load
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     // Toggle the accordion state for order summary
     const toggleAccordion = () => {
@@ -20,16 +28,113 @@ const ThankYouPage = () => {
 
     const [order, refetch, loading, error] = useOrders(orderId);
 
-    if (loading) return <div>Loading...</div>;
-    if (error || !order) return <div>Failed to load order details. Please contact support.</div>;
+    if (loading) {
+        return (
+            <div className="max-w-screen-2xl bg-gray-50 mx-auto mt-9 lg:mt-8 border-b-2 py-6">
+                {/* Skeleton Header */}
+                <div className="bg-black mx-auto flex justify-center items-center py-2 mb-8">
+                    <Skeleton.Input active style={{ width: '60%' }} />
+                </div>
+
+                <div className="max-w-screen-xl mx-auto px-4 lg:px-8">
+                    <div className="flex items-center justify-center my-8">
+                        <Skeleton.Avatar active size="large" />
+                        <Skeleton.Input active style={{ width: '40%' }} className="ml-3" />
+                    </div>
+
+                    <div className="text-center mb-8">
+                        {/* <Skeleton.Input active style={{ width: '80%' }} /> */}
+                        {/* <Skeleton.Input active style={{ width: '60%' }} className="mt-2" /> */}
+                    </div>
+
+                    <div className="border-t-2 border-b-2 py-6 my-8">
+                        <Skeleton active paragraph={{ rows: 3 }} />
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-2">
+                        {Array(4)
+                            .fill(0)
+                            .map((_, index) => (
+                                <div
+                                    key={index}
+                                    className="border text-sm p-4 rounded-lg bg-gray-50"
+                                >
+                                    <Skeleton active title={{ width: '50%' }} paragraph={{ rows: 2 }} />
+                                </div>
+                            ))}
+                    </div>
+
+                    <div className="border text-sm p-4 rounded-lg bg-gray-50 mt-6">
+                        <Skeleton active title={{ width: '40%' }} paragraph={{ rows: 1 }} />
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    if (error || !order) {
+        return (
+            <div className="max-w-screen-2xl bg-gray-50 mx-auto mt-9 lg:mt-8 border-b-2 py-6">
+                {/* Skeleton Header */}
+                <div className="bg-black mx-auto flex justify-center items-center py-2 mb-8">
+                    <Skeleton.Input active style={{ width: '60%' }} />
+                </div>
+
+                <div className="max-w-screen-xl mx-auto px-4 lg:px-8">
+                    <div className="flex items-center justify-center my-8">
+                        <Skeleton.Avatar active size="large" />
+                        <Skeleton.Input active style={{ width: '40%' }} className="ml-3" />
+                    </div>
+
+                    <div className="text-center mb-8">
+                        {/* <Skeleton.Input active style={{ width: '80%' }} /> */}
+                        {/* <Skeleton.Input active style={{ width: '60%' }} className="mt-2" /> */}
+                    </div>
+
+                    <div className="border-t-2 border-b-2 py-6 my-8">
+                        <Skeleton active paragraph={{ rows: 3 }} />
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-2">
+                        {Array(4)
+                            .fill(0)
+                            .map((_, index) => (
+                                <div
+                                    key={index}
+                                    className="border text-sm p-4 rounded-lg bg-gray-50"
+                                >
+                                    <Skeleton active title={{ width: '50%' }} paragraph={{ rows: 2 }} />
+                                </div>
+                            ))}
+                    </div>
+
+                    <div className="border text-sm p-4 rounded-lg bg-gray-50 mt-6">
+                        <Skeleton active title={{ width: '40%' }} paragraph={{ rows: 1 }} />
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     const { contactInfo, shippingAddress, billingAddress, cartItems, paymentMethod, subtotal, shippingCost, estimatedTaxes, total } = order;
+    console.log(cartItems)
+
+    // Show the receipt modal
+    const showReceiptModal = (order) => {
+        setSelectedOrder(order);
+        setIsReceiptModalVisible(true);
+    };
+
+    const hideReceiptModal = () => {
+        setIsReceiptModalVisible(false);
+        setSelectedOrder(null);
+    };
 
     return (
         <div className="max-w-screen-2xl bg-gray-50 mx-auto mt-9 lg:mt-8 border-b-2 py-8">
             {/* Checkout Page Header */}
-            <div className="bg-black mx-auto flex justify-center items-center py-2 mb-8">
-                <h2 className="text-lg font-bold text-white text-center py-[2px] my-auto">Alhamdulillah! Order Confirmed</h2>
+            <div className="bg-black mx-auto flex justify-center items-center py-0 mb-8">
+                <h2 className="text-lg font-bold pt-2 text-white text-center py-[2px] my-auto">Alhamdulillah! Order Confirmed</h2>
             </div>
             <div>
 
@@ -74,7 +179,7 @@ const ThankYouPage = () => {
 
                                             {/* Price */}
                                             <span className="font-medium text-sm text-gray-800">
-                                                Tk {(product.price * product.quantity).toFixed(2)} BDT
+                                                Tk {(product.variantPrices[product.size] * product.quantity).toFixed(2)} BDT
                                             </span>
                                         </div>
                                     </div>
@@ -103,7 +208,7 @@ const ThankYouPage = () => {
                 </div>
             </div>
             <div className='max-w-screen-xl mx-auto flex flex-wrap px-4 lg:px-8'>
-                {/* Left Side: Checkout Form */}
+
                 <div className='w-full lg:w-1/2 lg:pl-24'>
 
 
@@ -111,7 +216,7 @@ const ThankYouPage = () => {
                         <div className='-mt-2'>
                             <CheckCircleOutlined style={{ fontSize: '36px' }} />
                         </div>
-                        <h1 className="text-md font-bold ml-3">Thank you, {order.shippingAddress.firstName}!</h1>
+                        <h1 className="text-md font-bold ml-3">Thank you, {order.shippingAddress.name}!</h1>
                     </div>
 
                     <div className="text-center mb-8">
@@ -120,49 +225,79 @@ const ThankYouPage = () => {
                     </div>
 
                     <div className="border-t-2 border-b-2 py-6 my-8">
-                        <h2 className="text-xl font-bold">Order details</h2>
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-4">
+                        <div className='flex justify-between items-start -mt-2 mb-4'>
+                            <h2 className="text-xl px-2 font-bold">Order details</h2>
+                            <div>
+                                <Button
+                                    className='text-base bg-blue-800 text-white btn font-bold'
+                                    onClick={() => showReceiptModal(order)}
+                                    style={{ cursor: 'pointer' }}
+                                >
+                                    Invoice
+                                </Button>
+                            </div>
+                        </div>
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-2">
                             {/* Contact Information */}
-                            <div className="border p-4 rounded-lg bg-gray-50">
-                                <h3 className="text-md font-semibold mb-2">Contact Information</h3>
+                            <div className="border text-sm p-4 rounded-lg bg-gray-50">
+                                <div className='flex flex-col'>
+                                    <span className='text-md font-semibold mb-2'>Contact Information</span>
+                                    <span className="block w-28 mb-3 border-b-2 border-red-500"></span>
+                                </div>
                                 <p>{order.contactInfo.email}</p>
                             </div>
 
                             {/* Payment Method */}
-                            <div className="border p-4 rounded-lg bg-gray-50">
-                                <h3 className="text-md font-semibold mb-2">Payment method</h3>
+                            <div className="border text-sm p-4 rounded-lg bg-gray-50">
+                                <div className='flex flex-col'>
+                                    <span className='text-md font-semibold mb-2'>Payment Method</span>
+                                    <span className="block w-24 mb-3 border-b-2 border-red-500"></span>
+                                </div>
                                 <p>{order.paymentMethod === 'cashOnDelivery' &&
                                     <p>Cash On Delivery</p>
-                                } ৳{total.toFixed(2)}</p>
+                                }
+                                    <p className='text-base'>৳{order.total.toFixed(2)} <span className="text-sm">({order.paymentStatus})</span></p>
+                                </p>
                             </div>
 
                             {/* Shipping Address */}
-                            <div className="border p-4 rounded-lg bg-gray-50">
+                            <div className="border p-4 text-sm rounded-lg bg-gray-50">
                                 <div className='flex flex-col space-y-1'>
-                                    <p className="text-md font-semibold mb-2">Shipping Address</p>
-                                    <p className="font-light">{shippingAddress.firstName} {shippingAddress.lastName}</p>
+                                    <div className='flex flex-col'>
+                                        <span className='text-md font-semibold mb-2'>Shipping Address</span>
+                                        <span className="block w-24 mb-3 border-b-2 border-red-500"></span>
+                                    </div>
+                                    <p className="font-light">{shippingAddress.name}</p>
                                     <p className="font-light">{shippingAddress.address}</p>
-                                    <p className="font-light">{shippingAddress.phone}</p>
-                                    <p className="font-light">{shippingAddress.city}, {shippingAddress.postalCode}</p>
+                                    <p className="font-light">{shippingAddress.contactNumber}</p>
+                                    <p className="font-light">District: {shippingAddress.district}</p>
+                                    <p className="font-light">Thana: {shippingAddress.thana}</p>
                                 </div>
                             </div>
 
                             {/* Billing Address */}
-                            <div className="border p-4 rounded-lg bg-gray-50">
+                            <div className="border text-sm p-4 rounded-lg bg-gray-50">
                                 <div className='flex-1 flex-col space-y-1'>
-                                    <p className="text-md font-semibold mb-2">Billing Address</p>
-                                    <p className="font-light">{billingAddress.firstName} {billingAddress.lastName}</p>
+                                    <div className='flex flex-col'>
+                                        <span className='text-md font-semibold mb-2'>Billing Address</span>
+                                        <span className="block w-24 mb-3 border-b-2 border-red-500"></span>
+                                    </div>
+                                    <p className="font-light">{billingAddress.name}</p>
                                     <p className="font-light">{billingAddress.address}</p>
-                                    <p className="font-light">{billingAddress.city}, {billingAddress.postalCode}</p>
-                                    <p className="font-light">{billingAddress.phone}</p>
-                                    <p className="font-light">{contactInfo.email}</p>
+                                    <p className="font-light">{billingAddress.contactNumber}</p>
+                                    <p className="font-light">District: {billingAddress.district}</p>
+                                    <p className="font-light">Thana: {billingAddress.thana}</p>
+                                    {/* <p className="font-light">{contactInfo.email}</p> */}
                                 </div>
                             </div>
                         </div>
 
                         {/* Shipping Method */}
-                        <div className="border p-4 rounded-lg bg-gray-50 mt-6">
-                            <h3 className="text-md font-semibold mb-2">Shipping method</h3>
+                        <div className="border text-sm p-4 rounded-lg bg-gray-50 mt-6">
+                            <div className='flex flex-col'>
+                                <span className='text-md font-semibold mb-2'>Shipping method</span>
+                                <span className="block w-24 mb-3 border-b-2 border-red-500"></span>
+                            </div>
                             <p>{order.shippingMethod === 'insideDhaka' ? 'Inside Dhaka' : 'Outside Dhaka'}</p>
                         </div>
                     </div>
@@ -196,7 +331,7 @@ const ThankYouPage = () => {
 
                                             {/* Price */}
                                             <span className="font-medium text-sm text-gray-800">
-                                                Tk {(product.price * product.quantity).toFixed(2)} BDT
+                                                Tk {(product.variantPrices[product.size] * product.quantity).toFixed(2)} BDT
                                             </span>
                                         </div>
                                     </div>
@@ -261,7 +396,7 @@ const ThankYouPage = () => {
 
                                                 {/* Price */}
                                                 <span className="font-medium text-sm text-gray-800">
-                                                    Tk {(product.price * product.quantity).toFixed(2)} BDT
+                                                    Tk {(product.variantPrices[product.size] * product.quantity).toFixed(2)} BDT
                                                 </span>
                                             </div>
                                         </div>
@@ -290,7 +425,15 @@ const ThankYouPage = () => {
                     </div>
                 </div>
             </div>
-        </div>
+
+            {isReceiptModalVisible && (
+                <OrderReciept
+                    visible={isReceiptModalVisible}
+                    onClose={hideReceiptModal}
+                    order={selectedOrder} // Pass selected order to receipt modal
+                />
+            )}
+        </div >
     );
 };
 

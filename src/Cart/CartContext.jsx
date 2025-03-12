@@ -7,6 +7,7 @@ export const CartProvider = ({ children }) => {
         const savedCart = localStorage.getItem('cartItems');
         return savedCart ? JSON.parse(savedCart) : [];
     });
+    
     const [checkoutItem, setCheckoutItem] = useState(null);
     const [checkoutMode, setCheckoutMode] = useState(false);
 
@@ -15,8 +16,11 @@ export const CartProvider = ({ children }) => {
     }, [cartItems]);
 
     const addToCart = (product, quantity, selectedSize) => {
+        // console.log("Adding to cart:", product, product._id, quantity, selectedSize);
+        // console.log("Current cart items:", cartItems);
+
         const existingProductIndex = cartItems.findIndex(
-            (item) => item.id === product.id && item.size === selectedSize
+            (item) => item._id === product._id && item.size === selectedSize
         );
 
         if (existingProductIndex !== -1) {
@@ -28,23 +32,39 @@ export const CartProvider = ({ children }) => {
         }
     };
 
+    // const addToCart = (product) => {
+    //     setCartItems((prevItems) => {
+    //       const existingItemIndex = prevItems.findIndex(
+    //         (item) => item.id === product.id && item.size === product.size
+    //       );
+    
+    //       if (existingItemIndex >= 0) {
+    //         const updatedItems = [...prevItems];
+    //         updatedItems[existingItemIndex].quantity += product.quantity;
+    //         return updatedItems;
+    //       }
+    
+    //       return [...prevItems, { ...product, quantity: product.quantity || 1 }];
+    //     });
+    //   };
+
     const updateQuantity = (productId, size, quantity) => {
         setCartItems(cartItems.map(item =>
-            item.id === productId && item.size === size ? { ...item, quantity } : item
+            item._id === productId && item.size === size ? { ...item, quantity } : item
         ));
     };
 
     const removeFromCart = (productId, size) => {
-        setCartItems(cartItems.filter(item => item.id !== productId || item.size !== size));
+        setCartItems(cartItems.filter(item => item._id !== productId || item.size !== size));
     };
 
     const calculateSubtotal = () => {
-        return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+        return cartItems.reduce((total, item) => total + item.variantPrices[item.size] * item.quantity, 0);
     };
 
     const calculateTotal = () => {
         const subtotal = calculateSubtotal();
-        const taxes = subtotal * 0.075; // e.g., 7.5% tax rate
+        const taxes = subtotal * 0.00; // e.g., 0% tax rate
         return subtotal + taxes;
     };
 
@@ -55,6 +75,10 @@ export const CartProvider = ({ children }) => {
 
     const proceedToCartCheckout = () => {
         setCheckoutMode(false); // Normal checkout mode for all cart items
+    };
+
+    const clearCart = () => {
+        setCartItems([]);
     };
 
     return (
@@ -69,6 +93,7 @@ export const CartProvider = ({ children }) => {
             proceedToCartCheckout,
             checkoutItem,
             checkoutMode,
+            clearCart
         }}>
             {children}
         </CartContext.Provider>

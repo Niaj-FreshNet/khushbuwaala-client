@@ -80,7 +80,7 @@ const ProductGallery = ({ product }) => {
                 <img
                     src={images[activeIndex]} // Directly using image URL
                     alt={product?.name}
-                    className="absolute object-cover w-full h-full rounded-lg shadow-lg"
+                    className="object-contain w-full h-full rounded-lg shadow-sm"
                 />
             </div>
 
@@ -89,7 +89,7 @@ const ProductGallery = ({ product }) => {
                 ref={thumbsRef}
                 className="overflow-x-auto flex scrollbar-hide"
             >
-                {!firstThumbVisible && (
+                {/* {!firstThumbVisible && (
                     <button
                         onClick={onPrevious}
                         className="absolute top-4 left-0 z-10 rounded-full bg-white"
@@ -98,33 +98,33 @@ const ProductGallery = ({ product }) => {
                         <BiChevronLeft />
                     </button>
                 )}
-                    {!lastThumbVisible && (
-                        <button
-                            onClick={onNext}
-                            className="absolute top-4 right-0 z-10 rounded-full bg-white"
-                            disabled={activeIndex === images.length - 1}
-                        >
-                            <BiChevronRight />
-                        </button>
-                    )}
-                <div className="flex lg:flex-row items-center lg:items-start">
-                    {images.map((image, index) => (
-                        <button
-                            key={`thumbnail-${index}`}
-                            ref={index === 0 ? firstThumbRef : index === images.length - 1 ? lastThumbRef : null}
-                            type="button"
-                            aria-current={activeIndex === index ? 'true' : 'false'}
-                            className={`relative pb-1 pt-1 cursor-pointer ${activeIndex === index ? 'border-b-4 border-primary-700' : 'border-transparent'}`}
-                            onClick={() => handleThumbnailClick(index)}
-                        >
-                            <img
-                                src={image} // Directly using image URL
-                                alt={`Thumbnail ${index}`}
-                                className="w-20 h-20 object-cover rounded-lg"
-                            />
-                        </button>
-                    ))}
-                </div>
+                {!lastThumbVisible && (
+                    <button
+                        onClick={onNext}
+                        className="absolute top-4 right-0 z-10 rounded-full bg-white"
+                        disabled={activeIndex === images.length - 1}
+                    >
+                        <BiChevronRight />
+                    </button>
+                )} */}
+            </div>
+            <div className="flex lg:flex-row items-center lg:items-start">
+                {images.map((image, index) => (
+                    <button
+                        key={`thumbnail-${index}`}
+                        ref={index === 0 ? firstThumbRef : index === images.length - 1 ? lastThumbRef : null}
+                        type="button"
+                        aria-current={activeIndex === index ? 'true' : 'false'}
+                        className={`relative pb-1 pt-1 cursor-pointer ${activeIndex === index ? 'border-b-4 border-primary-700' : 'border-transparent'}`}
+                        onClick={() => handleThumbnailClick(index)}
+                    >
+                        <img
+                            src={image} // Directly using image URL
+                            alt={`Thumbnail ${index}`}
+                            className="p-1 w-20 h-20 object-cover rounded-lg"
+                        />
+                    </button>
+                ))}
             </div>
         </div>
     );

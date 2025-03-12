@@ -1,9 +1,8 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Carousel, Divider, Skeleton } from 'antd';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import ProductCard from '../../../Components/ProductCard/ProductCard';
-import useItem from '../../../Hooks/useItems';
-import useAxiosPublic from '../../../Hooks/useAxiosPublic';
+import useItems from '../../../Hooks/useItems';
 
 // Custom Arrows for the Carousel
 const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
@@ -26,44 +25,46 @@ const SlickArrowRight = ({ currentSlide, slideCount, ...props }) => (
 );
 
 const BestSellers = ({ columns }) => {
-  const [items, isLoading, isError, error] = useItem();
+  const [items, refetch, isLoading, isError, error] = useItems();
+  const [itemsCount, setItemsCount] = useState(4);
+
+  useEffect(() => {
+      const handleResize = () => {
+          if (window.innerWidth < 768) {
+              setItemsCount(2); // 2 items for small screen
+          } else {
+              setItemsCount(4); // 4 items for large screen
+          }
+      };
+
+      // Set initial count based on the screen size
+      handleResize();
+
+      // Add resize event listener
+      window.addEventListener('resize', handleResize);
+
+      // Clean up the event listener
+      return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   if (isLoading) {
     return (
       <div className="container mx-auto">
-        <h2 className="text-xl text-center font-bold -mb-2 relative">
+          <h2 className="text-xl text-center font-bold -mb-2 relative">
           Best Sellers
-        </h2>
-        <Divider dashed>
-          <span className="block w-36 mx-auto mb-2 border-b-2 border-red-500"></span> {/* Red underline */}
-        </Divider>
-        <div className='max-w-screen-xl flex justify-center mx-auto p-[2px] md:p-2'>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 lg:gap-4">
-            {Array.from({ length: 4 }).map((_, index) => (
-              <div
-                key={index}
-                className="border border-neutral-200 rounded-md hover:shadow-lg flex flex-col"
-                style={{ width: `200px`, height: `350px` }} // Match dimensions of ProductCard
-              >
-                {/* Skeleton for Image */}
-                <Skeleton.Input
-                  active
-                  className="w-full h-[100%] rounded-t-md"
-                />
-
-                {/* Skeleton for Title and Price */}
-                <div className="p-2 flex flex-col gap-2 border-t border-neutral-200">
-                  <Skeleton.Input active className="w-full h-4 mb-4" />
-
-                  {/* Skeleton for Button */}
-                  <div className='flex flex-row justify-between'>
-                    <Skeleton.Button active className="w-full h-8" />
+          </h2>
+          <Divider dashed>
+              <span className="block w-36 mx-auto mb-2 border-b-2 border-red-500"></span> {/* Red underline */}
+          </Divider>
+          <div className={`mx-auto px-2 grid grid-cols-2 md:grid-cols-4 gap-1 md:gap-4 w-full`}>
+              {Array.from({ length: itemsCount }).map((_, index) => (
+                  <div key={index} className="border p-2 rounded-md">
+                      <Skeleton.Image className="w-full h-40 mb-2" />
+                      <Skeleton active paragraph={{ rows: 1 }} />
+                      <Skeleton.Button active className="mt-2" />
                   </div>
-                </div>
-              </div>
-            ))}
+              ))}
           </div>
-        </div>
       </div>
     );
   }
@@ -71,39 +72,21 @@ const BestSellers = ({ columns }) => {
   if (isError) {
     return (
       <div className="container mx-auto">
-        <h2 className="text-xl text-center font-bold -mb-2 relative">
+          <h2 className="text-xl text-center font-bold -mb-2 relative">
           Best Sellers
-        </h2>
-        <Divider dashed>
-          <span className="block w-36 mx-auto mb-2 border-b-2 border-red-500"></span> {/* Red underline */}
-        </Divider>
-        <div className='max-w-screen-xl flex justify-center mx-auto p-[2px] md:p-2'>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 lg:gap-4">
-            {Array.from({ length: 4 }).map((_, index) => (
-              <div
-                key={index}
-                className="border border-neutral-200 rounded-md hover:shadow-lg flex flex-col"
-                style={{ width: `200px`, height: `350px` }} // Match dimensions of ProductCard
-              >
-                {/* Skeleton for Image */}
-                <Skeleton.Input
-                  active
-                  className="w-full h-[100%] rounded-t-md"
-                />
-
-                {/* Skeleton for Title and Price */}
-                <div className="p-2 flex flex-col gap-2 border-t border-neutral-200">
-                  <Skeleton.Input active className="w-full h-4 mb-4" />
-
-                  {/* Skeleton for Button */}
-                  <div className='flex flex-row justify-between'>
-                    <Skeleton.Button active className="w-full h-8" />
+          </h2>
+          <Divider dashed>
+              <span className="block w-36 mx-auto mb-2 border-b-2 border-red-500"></span> {/* Red underline */}
+          </Divider>
+          <div className={`mx-auto px-2 grid grid-cols-2 md:grid-cols-4 gap-1 md:gap-4 w-full`}>
+              {Array.from({ length: itemsCount }).map((_, index) => (
+                  <div key={index} className="border p-2 rounded-md">
+                      <Skeleton.Image className="w-full h-40 mb-2" />
+                      <Skeleton active paragraph={{ rows: 1 }} />
+                      <Skeleton.Button active className="mt-2" />
                   </div>
-                </div>
-              </div>
-            ))}
+              ))}
           </div>
-        </div>
       </div>
     );
   }
@@ -151,7 +134,7 @@ const BestSellers = ({ columns }) => {
       >
         {/* Filter items for 'featured' products only */}
         {items
-          .filter((product) => product.property === 'featured')
+          .filter((product) => product.section === 'featured')
           .map((product) => (
             <div key={product._id} className="flex p-[2px] md:p-2">
               {/* <div>{product.name}</div> */}

@@ -3,9 +3,13 @@ import { Modal, Form, Input, Select, Upload, InputNumber, Button, message, Radio
 import { UploadOutlined } from '@ant-design/icons';
 import useAxiosPublic from '../../../Hooks/useAxiosPublic';
 import { createStyles } from 'antd-style';
+import useItems from '../../../Hooks/useItems';
 
 const { TextArea } = Input;
 const { Option } = Select;
+
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const useStyle = createStyles(({ prefixCls, css }) => ({
     linearGradientButton: css`
@@ -37,6 +41,7 @@ const EditItem = ({ visible, onClose, product, refetch }) => {
     const { styles } = useStyle();
     const [form] = Form.useForm();
     const axiosPublic = useAxiosPublic();
+    const [items] = useItems();
     const [primaryImage, setPrimaryImage] = useState([]);
     const [secondaryImage, setSecondaryImage] = useState([]);
     const [moreImages, setMoreImages] = useState([]);
@@ -54,6 +59,7 @@ const EditItem = ({ visible, onClose, product, refetch }) => {
                 smell: product.smell,
                 specification: product.specification,
                 description: product.description,
+                notes: product.notes,
                 stock: product.stock,
                 measurement: product.measurement,
                 origin: product.origin,
@@ -87,7 +93,10 @@ const EditItem = ({ visible, onClose, product, refetch }) => {
     }, [product, form]);
 
     const handleImageChange = (file, setImage) => {
-        setImage([file]);
+        // setImage([file]);
+        const reader = new FileReader();
+        reader.onload = e => setImage([{ url: e.target.result, originFileObj: file }]);
+        reader.readAsDataURL(file);
         return false; // Prevent automatic upload
     };
 
@@ -112,21 +121,54 @@ const EditItem = ({ visible, onClose, product, refetch }) => {
             const updateImage = async (imageFile) => {
                 const formData = new FormData();
                 formData.append('image', imageFile);
-                const res = await axiosPublic.post(image_hosting_api, formData, {
-                    headers: {
-                        'content-type': 'multipart/form-data',
-                    },
-                });
-                if (res.data.success) {
-                    return res.data.data.display_url;
-                } else {
-                    throw new Error('Image upload failed');
+                try {
+                    const res = await axiosPublic.post(image_hosting_api, formData, {
+                        headers: { 'content-type': 'multipart/form-data' },
+                    });
+                    if (res.data.success) {
+                        return res.data.data.display_url;
+                    } else {
+                        console.error('Image Upload Failed:', res.data);
+                        throw new Error('Image upload failed');
+                    }
+                } catch (error) {
+                    console.error('Error during image upload:', error);
+                    throw error;
                 }
-            };
+            };            
 
-            const primaryImageUrl = primaryImage[0].originFileObj ? await updateImage(primaryImage[0].originFileObj) : primaryImage[0].url;
-            const secondaryImageUrl = secondaryImage[0] && secondaryImage[0].originFileObj ? await updateImage(secondaryImage[0].originFileObj) : (secondaryImage[0] ? secondaryImage[0].url : null);
-            const moreImageUrls = await Promise.all(moreImages.map(file => (file.originFileObj ? updateImage(file.originFileObj) : file.url)));
+            // Check if the primary image has changed
+            const primaryImageUrl =
+                primaryImage[0]?.originFileObj // New image uploaded
+                    ? await updateImage(primaryImage[0].originFileObj)
+                    : primaryImage[0]?.url === product.primaryImage // Image not changed
+                        ? product.primaryImage
+                        : primaryImage[0]?.url;
+
+            console.log(primaryImageUrl)
+
+            // Check if the secondary image has changed
+            const secondaryImageUrl =
+                secondaryImage[0]?.originFileObj // New image uploaded
+                    ? await updateImage(secondaryImage[0].originFileObj)
+                    : secondaryImage[0]?.url === product.secondaryImage // Image not changed
+                        ? product.secondaryImage
+                        : secondaryImage[0]?.url;
+
+            // Check for changes in additional images
+            const moreImageUrls = await Promise.all(
+                moreImages.map((file, index) =>
+                    file.originFileObj // New image uploaded
+                        ? updateImage(file.originFileObj)
+                        : file.url === product.moreImages?.[index] // Image not changed
+                            ? product.moreImages[index]
+                            : file.url
+                )
+            );
+
+            console.log('Primary Image State:', primaryImage);
+            console.log('Secondary Image State:', secondaryImage);
+
 
             // Collect variant prices
             let variantPrices = {};
@@ -151,7 +193,7 @@ const EditItem = ({ visible, onClose, product, refetch }) => {
                         variantPrices[`${size} piece`] = parseFloat(price);
                     }
                 });
-            }            
+            }
 
             const updatedItem = {
                 ...values,
@@ -162,6 +204,8 @@ const EditItem = ({ visible, onClose, product, refetch }) => {
                 moreImages: moreImageUrls,
                 isFeatured: values.isFeatured ? 'yes' : 'no',
             };
+
+            console.log(updatedItem)
 
             const productRes = await axiosPublic.patch(`/item/${product._id}`, updatedItem);
             console.log(productRes)
@@ -198,16 +242,16 @@ const EditItem = ({ visible, onClose, product, refetch }) => {
                 className="px-8 py-4 mx-auto border-t"
             >
 
-                <Form.Item
+                {/* <Form.Item
                     name="isFeatured"
                     valuePropName="checked" // This makes sure the value is true/false
                 >
                     <Checkbox>Is Featured</Checkbox>
-                </Form.Item>
-                
+                </Form.Item> */}
+
                 <div className="flex space-x-4">
                     <Form.Item
-                    className="flex-grow"
+                        className="flex-grow"
                         label="Product Name"
                         name="name"
                         rules={[{ required: true, message: 'Please enter the product name' }]}
@@ -245,6 +289,7 @@ const EditItem = ({ visible, onClose, product, refetch }) => {
                             <Option value="semiorganic">Semi-organic</Option>
                             <Option value="organic">Organic</Option>
                             <Option value="brand">Brand</Option>
+                            <Option value="giftsAndPackages">Gifts and Packages</Option>
                         </Select>
                     </Form.Item>
 
@@ -296,12 +341,28 @@ const EditItem = ({ visible, onClose, product, refetch }) => {
                         <Select mode="tags" placeholder="Select smell types">
                             <Option value="Corporate">Corporate</Option>
                             <Option value="Citrusy">Citrusy</Option>
+                            <Option value="Manly">Manly</Option>
+                            <Option value="Earthy">Earthy</Option>
+                            <Option value="Leathery">Leathery</Option>
+                            <Option value="Soapy">Soapy</Option>
                             <Option value="Refreshing">Refreshing</Option>
                             <Option value="Fruity">Fruity</Option>
                             <Option value="Sweet">Sweet</Option>
                             <Option value="Chocolate">Chocolate</Option>
+                            <Option value="Vanilla">Vanilla</Option>
+                            <Option value="Candy">Candy</Option>
+                            <Option value="Powdery">Powdery</Option>
                             <Option value="Floral">Floral</Option>
+                            <Option value="Bergamote">Bergamote</Option>
+                            <Option value="Lavender">Lavender</Option>
+                            <Option value="Vetiver">Vetiver</Option>
+                            <Option value="Woody">Woody</Option>
                             <Option value="Spicy">Spicy</Option>
+                            <Option value="Smooky">Smooky</Option>
+                            <Option value="Strong">Strong</Option>
+                            <Option value="Amber">Amber</Option>
+                            <Option value="Musky">Musky</Option>
+                            <Option value="Nostalgic">Nostalgic</Option>
                             <Option value="Projective">Projective</Option>
                             <Option value="Longetive">Longetive</Option>
                             <Option value="Synthetic">Synthetic</Option>
@@ -331,6 +392,14 @@ const EditItem = ({ visible, onClose, product, refetch }) => {
                     <TextArea rows={4} placeholder="Product Description" />
                 </Form.Item>
 
+                <Form.Item
+                    label="Notes"
+                    name="notes"
+                    rules={[{ required: true, message: 'Please enter the notes' }]}
+                >
+                    <TextArea rows={4} placeholder="Fragrance Notes" />
+                </Form.Item>
+
                 <div className="flex space-x-8">
 
                     <Form.Item
@@ -346,7 +415,8 @@ const EditItem = ({ visible, onClose, product, refetch }) => {
                     </Form.Item>
 
                     {/* Conditionally render fields based on the selected measurement */}
-                    {measurement === 'ml' && mlOptions.map((size) => (
+                    {/* {measurement === 'ml' && mlOptions.map((size) => ( */}
+                    {mlOptions.map((size) => (
                         <Form.Item
                             key={`ml-${size}`}
                             label={`${size} ml`}
@@ -418,12 +488,29 @@ const EditItem = ({ visible, onClose, product, refetch }) => {
                 <Form.Item
                     label="Related Products"
                     name="relatedProducts"
+                    rules={[
+                        { required: false, message: 'Please select at least four related products' },
+                        {
+                            validator: (_, value) => {
+                                if (value && (value.length < 4 || value.length > 6)) {
+                                    return Promise.reject('Please select between 4 and 6 products');
+                                }
+                                return Promise.resolve();
+                            }
+                        }
+                    ]}
+                    className="w-full"
                 >
-                    <Select mode="tags" placeholder="Related Products">
-                        {/* Example: Add your product IDs as options */}
-                        <Option value="1">Product 1</Option>
-                        <Option value="2">Product 2</Option>
-                        <Option value="3">Product 3</Option>
+                    <Select
+                        mode="multiple"
+                        placeholder="Select related products"
+                        maxTagCount={6}
+                    >
+                        {items.map((product) => (
+                            <Option key={product._id} value={product._id}>
+                                {product.name}
+                            </Option>
+                        ))}
                     </Select>
                 </Form.Item>
 
@@ -440,6 +527,7 @@ const EditItem = ({ visible, onClose, product, refetch }) => {
                             beforeUpload={file => handleImageChange(file, setPrimaryImage)}
                             fileList={primaryImage}
                             maxCount={1}
+                            onRemove={() => setPrimaryImage([])}
                         >
                             {primaryImage.length === 0 && (
                                 <div>
@@ -461,6 +549,7 @@ const EditItem = ({ visible, onClose, product, refetch }) => {
                             beforeUpload={file => handleImageChange(file, setSecondaryImage)}
                             fileList={secondaryImage}
                             maxCount={1}
+                            onRemove={() => setSecondaryImage([])}
                         >
                             {secondaryImage.length === 0 && (
                                 <div>

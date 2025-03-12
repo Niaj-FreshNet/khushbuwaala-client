@@ -6,8 +6,9 @@ import { AiOutlineSortAscending, AiOutlineClose } from 'react-icons/ai';
 
 const Sort = ({ visible, onClose, onSortChange }) => {
     const sortOptions = [
-        { label: 'Featured', value: 'featured' },
-        { label: 'Best selling', value: 'best-selling' },
+        { label: 'New Arrivals', value: 'newArrival' },
+        { label: 'Best selling', value: 'featured' },
+        { label: 'On Sale', value: 'onSale' },
         { label: 'Alphabetically, A-Z', value: 'a-z' },
         { label: 'Alphabetically, Z-A', value: 'z-a' },
         { label: 'Price, low to high', value: 'low-to-high' },
@@ -23,7 +24,8 @@ const Sort = ({ visible, onClose, onSortChange }) => {
     const handleSortChange = (sortOption) => {
         setSelectedSort(sortOption); // Update the selected sort option
         onSortChange(sortOption); // Call the parent function
-    };
+        onClose(false);
+    };    
 
     return (
         <>

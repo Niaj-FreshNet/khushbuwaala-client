@@ -1,7 +1,7 @@
 import React from 'react';
 import CarouselSlider from '../CarouselSlider/CarouselSlider';
 import Category from '../Category/Category';
-import ShowCase from '../ShowCase/ShowCase';
+// import ShowCase from '../ShowCase/ShowCase';
 import Services from '../Services/Services';
 import Reviews from '../Reviews/Reviews';
 import Subscribe from '../Subscribe/Subscribe';
@@ -10,72 +10,94 @@ import BestSellers from '../BestSellers/BestSellers';
 import InspiredPerfumeProduct from '../ProductSlide/InspiredPerfumeProduct';
 import OrientalProduct from '../ProductSlide/OrientalProduct';
 import OudProduct from '../ProductSlide/OudProduct';
+import InspiredBannerDesktop from "../../../assets/n11.webp";
+import InspiredBannerMobile from "../../../assets/n1.webp";
+import OrientalBannerDesktop from "../../../assets/n2.webp";
+import OrientalBannerMobile from "../../../assets/n21.webp";
+import OudBannerDesktop from "../../../assets/n3.webp";
+import OudBannerMobile from "../../../assets/n31.webp";
 
 const HomePage = () => {
     return (
-        <div className='w-full mx-auto'>
+        <div className='max-w-screen-2xl mx-auto'>
             <div className='max-w-screen-2xl mx-auto'>
                 <CarouselSlider />
             </div>
-            <div className='bg-gray-50 pt-8 pb-12'>
-                <div className='max-w-screen-xl px-1 mx-auto'>
+            <div className='bg-gray-50 pt-6 pb-14'>
+                <div className='max-w-screen-xl px-2 mx-auto'>
                     <BestSellers />
                 </div>
             </div>
-            <div className='max-w-screen-2xl mx-auto mb-0'>
-                <Banner
-                    heading={'Lead Corporate with Inspired Perfume Oil Collection'}
-                    text={'Get the most luxurious fragrances at exclusive prices. Limited time offer!'}
-                    button={'Shop Now'} />
-            </div>
-            <div className='px-1 my-1'>
+            <div className='mx-auto my-[2px]'>
                 <Category />
+                
             </div>
-            <div className='max-w-screen-2xl mx-auto mb-0'>
+            <div className='mx-auto mb-0'>
                 <Banner
-                    heading={'Lead Corporate with Inspired Perfume Oil Collection'}
-                    text={'Get the most luxurious fragrances at exclusive prices. Limited time offer!'}
-                    button={'Shop Now'} />
+                    heading={'Premium Inspired Perfume Oils'}
+                    text={'Get The Best Perfume Oil Editions Inspired From Designer Perfumes'}
+                    button={'Shop Now'}
+                    CategoryLink="/inspired-perfume-oil"
+                    bannerMobile={InspiredBannerMobile}
+                    bannerDesktop={InspiredBannerDesktop}
+                />
             </div>
-            <div className='bg-gray-50 pt-8 pb-12'>
-                <div className='max-w-screen-xl px-1 mx-auto'>
+            <div className='bg-gray-50 pt-6 pb-14'>
+                <div className='max-w-screen-xl px-2 mx-auto'>
                     <InspiredPerfumeProduct />
                 </div>
             </div>
-            <div className='max-w-screen-2xl mx-auto mb-0'>
+            <div className='mx-auto mb-0'>
                 <Banner
-                    heading={'Feel the Arabian Fragrances'}
-                    text={'Get the most luxurious fragrances at exclusive prices. Limited time offer!'}
-                    button={'Shop Now'} />
+                    heading={'Explore Oriental Fragrances'}
+                    text={'Choose Your Desired Perfume Oil from Oriental & Arabian Attar Collections'}
+                    button={'Shop Now'}
+                    CategoryLink="/oriental-attar"
+                    bannerDesktop={OrientalBannerDesktop}
+                    bannerMobile={OrientalBannerMobile}
+                />
             </div>
-            <div className='bg-gray-50 pt-8 pb-12'>
-                <div className='max-w-screen-xl px-1 mx-auto'>
+            <div className='bg-gray-50 pt-6 pb-14'>
+                <div className='max-w-screen-xl px-2 mx-auto'>
                     <OrientalProduct />
                 </div>
             </div>
-            <div className='max-w-screen-2xl mx-auto mb-0'>
+            <div className='mx-auto mb-0'>
                 <Banner
-                    heading={'Sniff Our Precious and Royal Oud Collection'}
-                    text={'Get the most luxurious fragrances at exclusive prices. Limited time offer!'}
-                    button={'Shop Now'} />
+                    heading={'Best Artificial Editions Of Oud Oils'}
+                    text={'Choose The Royal Fragrances From Artificial Oud Collection'}
+                    button={'Shop Now'}
+                    CategoryLink="/artificial-oud"
+                    bannerDesktop={OudBannerDesktop}
+                    bannerMobile={OudBannerMobile}
+                />
             </div>
-            <div className='bg-gray-50 pt-8 pb-12'>
-                <div className='max-w-screen-xl px-1 mx-auto'>
+            <div className='bg-gray-50 pt-6 pb-14'>
+                <div className='max-w-screen-xl px-2 mx-auto'>
                     <OudProduct />
                 </div>
             </div>
-            <div className='max-w-screen-2xl mx-auto my-8'>
+            <div className='px-2 mx-auto my-8'>
                 <Services />
             </div>
             <div className='my-8'>
                 <Reviews />
             </div>
-            {/* <div className='my-8'>
-                <ShowCase />
-            </div> */}
             <div className='my-8'>
                 <Subscribe />
             </div>
+            {/* <div className='mx-auto mb-0'>
+                <Banner
+                    heading={'Lead Corporate with Inspired Perfume Oil Collection'}
+                    text={'Get the most luxurious fragrances at exclusive prices. Limited time offer!'}
+                    button={'Shop Now'} 
+                    bannerMobile={BannerMobile}
+                    bannerDesktop={BannerDesktop}
+                    />
+            </div> */}
+            {/* <div className='my-8'>
+                <ShowCase />
+            </div> */}
         </div>
     );
 };

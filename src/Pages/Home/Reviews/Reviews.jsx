@@ -1,30 +1,38 @@
 import React from 'react';
 import { FacebookFilled, InstagramFilled } from '@ant-design/icons'; // Ensure you have these icons installed
 import { Divider } from 'antd';
+import review1 from '../../../assets/r5.webp';
+import review2 from '../../../assets/r6.webp';
+import review3 from '../../../assets/r3.webp';
+import review4 from '../../../assets/r4.webp';
 
 const celebrities = [
     {
-        name: "Celebrity 1",
-        image: "https://via.placeholder.com/150", // Replace with the actual image URL
+        image: review1,
+        facebookLink: "https://www.facebook.com/khushbuwaala",
+        instagramLink: "https://www.instagram.com/khushbuwaala",
     },
     {
-        name: "Celebrity 2",
-        image: "https://via.placeholder.com/150", // Replace with the actual image URL
+        image: review2,
+        facebookLink: "https://www.facebook.com/khushbuwaala",
+        instagramLink: "https://www.instagram.com/khushbuwaala",
     },
     {
-        name: "Celebrity 3",
-        image: "https://via.placeholder.com/150", // Replace with the actual image URL
+        image: review3,
+        facebookLink: "https://www.facebook.com/khushbuwaala",
+        instagramLink: "https://www.instagram.com/khushbuwaala",
     },
     {
-        name: "Celebrity 3",
-        image: "https://via.placeholder.com/150", // Replace with the actual image URL
+        image: review4,
+        facebookLink: "https://www.facebook.com/khushbuwaala",
+        instagramLink: "https://www.instagram.com/khushbuwaala",
     },
 ];
 
 const Reviews = () => {
     return (
         <div className="py-4 px-4 text-center">
-            <h2 className="text-xl font-bold -mb-2 relative">
+            <h2 className="text-xl font-bold mb-2 relative">
                 Inspired by us
             </h2>
             <Divider dashed>
@@ -33,25 +41,24 @@ const Reviews = () => {
 
             {/* Centering the grid container */}
             <div className="flex justify-center">
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 max-w-screen-md">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-screen-lg">
                     {celebrities.map((celebrity, index) => (
                         <div key={index} className="relative group">
                             <img
                                 src={celebrity.image}
-                                alt={celebrity.name}
-                                className="w-full h-64 object-cover rounded-lg shadow-md mx-auto" // Image centered
+                                alt={`Celebrity ${index + 1}`}
+                                className="w-full h-64 object-cover rounded-lg shadow-md"
                             />
                             <div className="absolute inset-0 bg-gray-800 bg-opacity-50 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100 flex justify-center items-center">
-                                <div className="flex space-x-4" style={{ marginTop: '60%' }}>
-                                    <a href="#" aria-label="Facebook">
+                                <div className="flex space-x-4">
+                                    <a href={celebrity.facebookLink} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                                         <FacebookFilled className="text-white text-3xl" />
                                     </a>
-                                    <a href="#" aria-label="Instagram">
+                                    <a href={celebrity.instagramLink} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                                         <InstagramFilled className="text-white text-3xl" />
                                     </a>
                                 </div>
                             </div>
-                            <p className="text-center mt-2 font-semibold">{celebrity.name}</p> {/* Name below the image */}
                         </div>
                     ))}
                 </div>

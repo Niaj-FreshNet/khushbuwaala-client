@@ -6,6 +6,7 @@ import useItem from "../../../Hooks/useItems";
 import EditItem from "../EditItem/EditItem";
 import { GrPrint } from "react-icons/gr";
 import { BiEdit } from "react-icons/bi";
+import { Link, useNavigate } from "react-router-dom";
 
 const { Search } = Input;
 
@@ -18,6 +19,17 @@ const AllItems = ({ products }) => {
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [isEditModalVisible, setIsEditModalVisible] = useState(false);
 
+    const categoryMapping = {
+        inspiredPerfumeOil: "Inspired Perfume Oil",
+        oriental: "Oriental",
+        artificialOud: "Artificial Oud",
+        natural: "Natural",
+        semiOrganic: "Semi-Organic",
+        organic: "Organic",
+        brand: "Brand",
+    };
+
+
     const showEditModal = (product) => {
         setSelectedProduct(product);
         setIsEditModalVisible(true);
@@ -26,6 +38,7 @@ const AllItems = ({ products }) => {
     const hideEditModal = () => {
         setIsEditModalVisible(false);
         setSelectedProduct(null);
+        refetch();
     };
 
     const showDeleteConfirm = (item) => {
@@ -39,7 +52,7 @@ const AllItems = ({ products }) => {
                 console.log("Attempting to delete:", currentItem._id); // Log current item ID
                 const res = await axiosPublic.delete(`/item/${currentItem._id}`);
                 console.log("Delete response:", res.data); // Log response data
-    
+
                 if (res.data.deletedCount > 0) {
                     message.success(`${currentItem.name} deleted!`);
                     refetch(); // Refetch items after delete
@@ -67,9 +80,11 @@ const AllItems = ({ products }) => {
         setSearchText(e.target.value);
     };
 
-    const filteredItems = items.filter((item) =>
-        item.name.toLowerCase().includes(searchText.toLowerCase())
-    );
+    const filteredItems = items
+        .filter((item) =>
+            item.name.toLowerCase().includes(searchText.toLowerCase())
+        )
+        .reverse(); // Reverse the filtered array
 
     const columns = [
         {
@@ -105,21 +120,35 @@ const AllItems = ({ products }) => {
             dataIndex: 'name',
             key: 'name',
             align: 'left',
+            render: (text, record) => (
+                <Link
+                    to={`/${record.category}/${record.name.toLowerCase().replace(/ /g, '-')}`} // Construct URL from category and name
+                    target="_blank" // This will open the link in a new tab
+                    style={{
+                        cursor: 'pointer',
+                        color: 'blue',
+                        textDecoration: '',
+                    }}
+                >
+                    {text}
+                </Link>
+            ),
         },
         {
             title: 'Category',
             dataIndex: 'category',
             key: 'category',
             sorter: (a, b) => a.category.localeCompare(b.category),
-            align: 'left',
+            align: 'center',
+            render: (text) => categoryMapping[text] || text,
         },
         {
             title: 'Price',
             dataIndex: 'price',
             key: 'price',
-            render: (text) => `$ ${text}`,
+            render: (text) => `${text} BDT`,
             sorter: (a, b) => a.price - b.price,
-            align: 'right',
+            align: 'center',
         },
         {
             title: 'Discount',
