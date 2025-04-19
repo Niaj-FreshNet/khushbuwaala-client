@@ -1,6 +1,6 @@
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { Button, Input, Row, Col } from "antd";
-import { DeleteOutlined, ShoppingCartOutlined } from '@ant-design/icons'; // Import icons
+import { DeleteOutlined } from '@ant-design/icons'; // Import icons
 import paymentMethod from '../../../assets/paymentMethod.svg';
 import { CartContext } from '../../../Cart/CartContext';
 import { FcEmptyTrash } from "react-icons/fc";

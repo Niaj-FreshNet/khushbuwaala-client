@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button, Collapse, Input, Rate, Tag } from 'antd';
 import { PlusOutlined, MinusOutlined } from '@ant-design/icons';
 import TextArea from 'antd/es/input/TextArea';

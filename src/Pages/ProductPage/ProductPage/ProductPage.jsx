@@ -131,7 +131,11 @@ const ProductPage = () => {
     };
 
     return (
+<<<<<<< HEAD
         <div className="w-full mx-auto mt-9 lg:mt-8 mb-8 py-8">
+=======
+        <div className="max-w-screen-2xl mx-auto mt-9 lg:mt-8 mb-8 py-8">
+>>>>>>> 2116d4fa5d328a63614b9fd9106bccbffec39f68
 
             {/* Dynamic Metadata */}
             <Helmet>

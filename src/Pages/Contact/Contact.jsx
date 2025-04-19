@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+import React from "react";
+>>>>>>> 2116d4fa5d328a63614b9fd9106bccbffec39f68
 import { Helmet } from "react-helmet-async";
 
 const Contact = () => {
@@ -7,7 +11,11 @@ const Contact = () => {
     const pageKeywords = "contact us, KhushbuWaala, Khushbuwala, Khushbu Wala, Khushbu Waala, Khushboowala, Khushboo, Khushbu, customer support, perfume inquiries, contact KhushbuWaala, Dhaka office, customer service";
 
     return (
+<<<<<<< HEAD
         <div className="w-full mx-auto bg-white text-black mt-9 lg:mt-8 py-8">
+=======
+        <div className="max-w-screen-2xl mx-auto bg-white mt-9 lg:mt-8 py-8">
+>>>>>>> 2116d4fa5d328a63614b9fd9106bccbffec39f68
             {/* SEO Metadata */}
             <Helmet>
                 <title>{pageTitle}</title>

@@ -1,11 +1,9 @@
-import { Button, Drawer, Select, Skeleton, Spin, Tag } from 'antd';
-import { useContext, useState } from 'react';
+import { Button, Drawer, Select, Skeleton, Tag } from 'antd';
+import { useState } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
-import { CartContext } from '../../../Cart/CartContext';
 import { useNavigate } from 'react-router-dom';
 import Search from 'antd/es/input/Search';
 import useItems from '../../../Hooks/useItems';
-import { FaTrashAlt } from 'react-icons/fa';
 
 const smellTypes = [
     "Corporate", "Citrusy", "Manly", "Earthy", "Leathery", "Soapy", "Refreshing", "Fruity",

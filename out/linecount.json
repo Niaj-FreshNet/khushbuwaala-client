@@ -1,0 +1,1061 @@
+{
+    "extension": "linecount",
+    "version": "0.1.7",
+    "workspace": "d:\\PROJECTS\\khushbuwaala-client",
+    "linecount": [
+        {
+            "version": "0.1.7",
+            "counttime": "2024-12-22 21:10:27",
+            "filesum": 165,
+            "codesum": 17204,
+            "commentsum": 1208,
+            "blanksum": 918,
+            "filelist": [
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": ".env.local"
+                },
+                {
+                    "blank": 0,
+                    "code": 146,
+                    "comment": 0,
+                    "filename": ".firebase\\hosting..cache"
+                },
+                {
+                    "blank": 0,
+                    "code": 32,
+                    "comment": 0,
+                    "filename": ".firebase\\hosting.ZGlzdA.cache"
+                },
+                {
+                    "blank": 0,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": ".firebaserc"
+                },
+                {
+                    "blank": 2,
+                    "code": 14,
+                    "comment": 9,
+                    "filename": ".gitignore"
+                },
+                {
+                    "filename": "dist\\assets\\ajax-loader-BcnMEykj.gif",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\assets\\banner1-5yBt8HDm.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\assets\\banner2-CArk-6Yz.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\assets\\Category1-D-ouTI7m.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\assets\\Category2-Dycu4NpC.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\assets\\Category3-by9nQubb.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\assets\\Category4-De8ufL3r.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\assets\\favicon-DrXQ9qzN.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\assets\\home1-Cw01tDMo.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\assets\\home2-Bds3l68r.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 8,
+                    "code": 406,
+                    "comment": 69,
+                    "filename": "dist\\assets\\index-B9m_ej3X.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\assets\\index-D5JHIdRO.css"
+                },
+                {
+                    "filename": "dist\\assets\\KhushbuWaala-DyiHBXIx.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\assets\\n1-D3FsqOwv.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\assets\\n11-BGS2UA1F.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\assets\\n111-C2kE3uAf.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\assets\\n2-Eem3_Aka.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\assets\\n21-Bw9k8pTp.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\assets\\n3-BYrQXb_0.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\assets\\n31-D4-Eb0g_.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\assets\\n4-D6kqfiar.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\assets\\nF-CCGvnxVL.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\assets\\nFF-BJo9obpo.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 136,
+                    "comment": 233,
+                    "filename": "dist\\assets\\nG-x7kzZ2T6.jpg"
+                },
+                {
+                    "blank": 0,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "dist\\assets\\paymentMethod-C6F4oAz1.svg"
+                },
+                {
+                    "filename": "dist\\assets\\r3-boFuCLl1.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\assets\\r4-B59H_G9q.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\assets\\r5-CSaztr4Y.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\assets\\r6-CAK8pmyJ.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 1,
+                    "code": 13,
+                    "comment": 0,
+                    "filename": "dist\\assets\\slick-BlzDm7g2.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 15,
+                    "comment": 0,
+                    "filename": "dist\\index.html"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\vite.svg"
+                },
+                {
+                    "blank": 1,
+                    "code": 37,
+                    "comment": 0,
+                    "filename": "eslint.config.js"
+                },
+                {
+                    "blank": 1,
+                    "code": 15,
+                    "comment": 0,
+                    "filename": "firebase.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "index.html"
+                },
+                {
+                    "blank": 79,
+                    "code": 9125,
+                    "comment": 0,
+                    "filename": "package-lock.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 46,
+                    "comment": 0,
+                    "filename": "package.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "postcss.config.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "public\\vite.svg"
+                },
+                {
+                    "blank": 3,
+                    "code": 5,
+                    "comment": 2,
+                    "filename": "README.md"
+                },
+                {
+                    "blank": 5,
+                    "code": 37,
+                    "comment": 0,
+                    "filename": "src\\App.css"
+                },
+                {
+                    "blank": 3,
+                    "code": 32,
+                    "comment": 0,
+                    "filename": "src\\App.jsx"
+                },
+                {
+                    "filename": "src\\assets\\banner1.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\banner2.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\Blucheez-Red_Blucheez_logo.svg"
+                },
+                {
+                    "filename": "src\\assets\\Card1.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\Card2.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\Category1.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\Category2.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\Category3.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\Category4.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\favicon.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\home1.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\home2.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\KhushbuWaala.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\n1.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\n11.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\n111.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\n2.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\n21.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\n3.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\n31.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\n4.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\nF.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\nFF.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 136,
+                    "comment": 233,
+                    "filename": "src\\assets\\nG.jpg"
+                },
+                {
+                    "blank": 0,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "src\\assets\\paymentMethod.svg"
+                },
+                {
+                    "filename": "src\\assets\\r2.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\r3.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\r4.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\r5.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\r6.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\ShowCase1.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\ShowCase2.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 17,
+                    "code": 66,
+                    "comment": 16,
+                    "filename": "src\\Cart\\CartContext.jsx"
+                },
+                {
+                    "blank": 5,
+                    "code": 35,
+                    "comment": 1,
+                    "filename": "src\\Components\\Banner\\Banner.css"
+                },
+                {
+                    "blank": 3,
+                    "code": 34,
+                    "comment": 1,
+                    "filename": "src\\Components\\Banner\\Banner.jsx"
+                },
+                {
+                    "blank": 5,
+                    "code": 15,
+                    "comment": 1,
+                    "filename": "src\\Components\\CategoryCard\\CategoryCard.css"
+                },
+                {
+                    "blank": 2,
+                    "code": 24,
+                    "comment": 1,
+                    "filename": "src\\Components\\CategoryCard\\CategoryCard.jsx"
+                },
+                {
+                    "blank": 15,
+                    "code": 163,
+                    "comment": 9,
+                    "filename": "src\\Components\\Filter\\Filter.jsx"
+                },
+                {
+                    "blank": 5,
+                    "code": 29,
+                    "comment": 2,
+                    "filename": "src\\Components\\Notice\\Notice.jsx"
+                },
+                {
+                    "blank": 10,
+                    "code": 54,
+                    "comment": 0,
+                    "filename": "src\\Components\\ProductCard\\ProductCard.css"
+                },
+                {
+                    "blank": 16,
+                    "code": 119,
+                    "comment": 31,
+                    "filename": "src\\Components\\ProductCard\\ProductCard.jsx"
+                },
+                {
+                    "blank": 3,
+                    "code": 28,
+                    "comment": 7,
+                    "filename": "src\\Components\\ShopBanner\\ShopBanner.jsx"
+                },
+                {
+                    "blank": 2,
+                    "code": 16,
+                    "comment": 0,
+                    "filename": "src\\Components\\ShowCaseCard\\ShowCaseCard.jsx"
+                },
+                {
+                    "blank": 3,
+                    "code": 58,
+                    "comment": 6,
+                    "filename": "src\\Components\\SocialIcons\\SocialIcons.jsx"
+                },
+                {
+                    "blank": 7,
+                    "code": 58,
+                    "comment": 7,
+                    "filename": "src\\Components\\Sort\\Sort.jsx"
+                },
+                {
+                    "blank": 2,
+                    "code": 10,
+                    "comment": 5,
+                    "filename": "src\\FIrebase\\firebase.config.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "src\\Hooks\\useAdmin.jsx"
+                },
+                {
+                    "blank": 3,
+                    "code": 11,
+                    "comment": 3,
+                    "filename": "src\\Hooks\\useAxiosPublic.jsx"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "src\\Hooks\\useAxiosSecure.jsx"
+                },
+                {
+                    "blank": 19,
+                    "code": 27,
+                    "comment": 40,
+                    "filename": "src\\Hooks\\useItems.jsx"
+                },
+                {
+                    "blank": 5,
+                    "code": 17,
+                    "comment": 3,
+                    "filename": "src\\Hooks\\useOrders.jsx"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "src\\Hooks\\usePayments.jsx"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "src\\Hooks\\useSales.jsx"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "src\\Hooks\\useUsers.jsx"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "src\\index.css"
+                },
+                {
+                    "blank": 6,
+                    "code": 64,
+                    "comment": 5,
+                    "filename": "src\\Layout\\Dashboard.jsx"
+                },
+                {
+                    "blank": 2,
+                    "code": 18,
+                    "comment": 0,
+                    "filename": "src\\Layout\\Main.jsx"
+                },
+                {
+                    "blank": 2,
+                    "code": 21,
+                    "comment": 0,
+                    "filename": "src\\main.jsx"
+                },
+                {
+                    "blank": 11,
+                    "code": 98,
+                    "comment": 3,
+                    "filename": "src\\Pages\\AddToCart\\CartDrawer\\CartDrawer.jsx"
+                },
+                {
+                    "blank": 8,
+                    "code": 173,
+                    "comment": 3,
+                    "filename": "src\\Pages\\AddToCart\\CartPage\\CartPage.jsx"
+                },
+                {
+                    "blank": 3,
+                    "code": 33,
+                    "comment": 0,
+                    "filename": "src\\Pages\\ArtificialOudPage\\ArtificialOudPage.jsx"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "src\\Pages\\CategoryWise\\CategoryWisePage\\CategoryWisePage.jsx"
+                },
+                {
+                    "blank": 24,
+                    "code": 134,
+                    "comment": 27,
+                    "filename": "src\\Pages\\CategoryWise\\CategoryWiseProducts\\CategoryWiseProducts.jsx"
+                },
+                {
+                    "blank": 32,
+                    "code": 446,
+                    "comment": 8,
+                    "filename": "src\\Pages\\CheckOut\\CheckOutPage\\CheckOutPage.jsx"
+                },
+                {
+                    "blank": 18,
+                    "code": 0,
+                    "comment": 205,
+                    "filename": "src\\Pages\\CheckOut\\CheckOutPage\\test.jsx"
+                },
+                {
+                    "blank": 6,
+                    "code": 41,
+                    "comment": 0,
+                    "filename": "src\\Pages\\Contact\\Contact.jsx"
+                },
+                {
+                    "blank": 52,
+                    "code": 468,
+                    "comment": 22,
+                    "filename": "src\\Pages\\Dashboard\\AddItem\\AddItem.jsx"
+                },
+                {
+                    "blank": 18,
+                    "code": 193,
+                    "comment": 5,
+                    "filename": "src\\Pages\\Dashboard\\AllItems\\AllItems.jsx"
+                },
+                {
+                    "blank": 58,
+                    "code": 524,
+                    "comment": 26,
+                    "filename": "src\\Pages\\Dashboard\\EditItem\\EditItem.jsx"
+                },
+                {
+                    "blank": 18,
+                    "code": 72,
+                    "comment": 5,
+                    "filename": "src\\Pages\\Dashboard\\Orders\\OrderDetails.jsx"
+                },
+                {
+                    "blank": 16,
+                    "code": 202,
+                    "comment": 6,
+                    "filename": "src\\Pages\\Dashboard\\Orders\\OrderReciept.jsx"
+                },
+                {
+                    "blank": 30,
+                    "code": 325,
+                    "comment": 21,
+                    "filename": "src\\Pages\\Dashboard\\Orders\\Orders.jsx"
+                },
+                {
+                    "blank": 3,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "src\\Pages\\Dashboard\\Reports\\Reports.jsx"
+                },
+                {
+                    "blank": 3,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "src\\Pages\\Dashboard\\Sales\\Sales.jsx"
+                },
+                {
+                    "blank": 3,
+                    "code": 34,
+                    "comment": 0,
+                    "filename": "src\\Pages\\ForWomenPage\\ForWomenPage.jsx"
+                },
+                {
+                    "blank": 3,
+                    "code": 33,
+                    "comment": 0,
+                    "filename": "src\\Pages\\GiftsAndPackagesPage\\GiftsAndPackagesPage.jsx"
+                },
+                {
+                    "blank": 13,
+                    "code": 131,
+                    "comment": 10,
+                    "filename": "src\\Pages\\Home\\BestSellers\\BestSellers.jsx"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "src\\Pages\\Home\\CarouselSlider\\CarouselSlider.css"
+                },
+                {
+                    "blank": 2,
+                    "code": 25,
+                    "comment": 2,
+                    "filename": "src\\Pages\\Home\\CarouselSlider\\CarouselSlider.jsx"
+                },
+                {
+                    "blank": 2,
+                    "code": 43,
+                    "comment": 0,
+                    "filename": "src\\Pages\\Home\\Category\\Category.jsx"
+                },
+                {
+                    "blank": 4,
+                    "code": 91,
+                    "comment": 11,
+                    "filename": "src\\Pages\\Home\\HomePage\\HomePage.jsx"
+                },
+                {
+                    "blank": 2,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "src\\Pages\\Home\\Products\\Products.jsx"
+                },
+                {
+                    "blank": 13,
+                    "code": 131,
+                    "comment": 9,
+                    "filename": "src\\Pages\\Home\\ProductSlide\\InspiredPerfumeProduct.jsx"
+                },
+                {
+                    "blank": 13,
+                    "code": 131,
+                    "comment": 10,
+                    "filename": "src\\Pages\\Home\\ProductSlide\\OrientalProduct.jsx"
+                },
+                {
+                    "blank": 13,
+                    "code": 132,
+                    "comment": 10,
+                    "filename": "src\\Pages\\Home\\ProductSlide\\OudProduct.jsx"
+                },
+                {
+                    "blank": 4,
+                    "code": 66,
+                    "comment": 1,
+                    "filename": "src\\Pages\\Home\\Reviews\\Reviews.jsx"
+                },
+                {
+                    "blank": 8,
+                    "code": 88,
+                    "comment": 4,
+                    "filename": "src\\Pages\\Home\\Services\\Services.jsx"
+                },
+                {
+                    "blank": 5,
+                    "code": 25,
+                    "comment": 0,
+                    "filename": "src\\Pages\\Home\\ShowCase\\ShowCase.css"
+                },
+                {
+                    "blank": 3,
+                    "code": 36,
+                    "comment": 0,
+                    "filename": "src\\Pages\\Home\\ShowCase\\ShowCase.jsx"
+                },
+                {
+                    "blank": 2,
+                    "code": 31,
+                    "comment": 0,
+                    "filename": "src\\Pages\\Home\\Subscribe\\Subscribe.jsx"
+                },
+                {
+                    "blank": 3,
+                    "code": 33,
+                    "comment": 0,
+                    "filename": "src\\Pages\\InspiredPefumeOilPage\\InspiredPefumeOilPage.jsx"
+                },
+                {
+                    "blank": 3,
+                    "code": 33,
+                    "comment": 0,
+                    "filename": "src\\Pages\\NaturalPage\\NaturalPage.jsx"
+                },
+                {
+                    "blank": 3,
+                    "code": 34,
+                    "comment": 0,
+                    "filename": "src\\Pages\\NewIn\\NewInPage\\NewInPage.jsx"
+                },
+                {
+                    "blank": 3,
+                    "code": 33,
+                    "comment": 0,
+                    "filename": "src\\Pages\\OrientalPage\\OrientalPage.jsx"
+                },
+                {
+                    "blank": 4,
+                    "code": 21,
+                    "comment": 2,
+                    "filename": "src\\Pages\\ProductPage\\BreadCrumbs\\BreadCrumbs.jsx"
+                },
+                {
+                    "blank": 11,
+                    "code": 87,
+                    "comment": 5,
+                    "filename": "src\\Pages\\ProductPage\\ProductAccordion\\ProductAccordion.jsx"
+                },
+                {
+                    "blank": 23,
+                    "code": 165,
+                    "comment": 15,
+                    "filename": "src\\Pages\\ProductPage\\ProductDetails\\ProductDetails.jsx"
+                },
+                {
+                    "blank": 16,
+                    "code": 97,
+                    "comment": 23,
+                    "filename": "src\\Pages\\ProductPage\\ProductGallery\\ProductGallery.jsx"
+                },
+                {
+                    "blank": 10,
+                    "code": 91,
+                    "comment": 3,
+                    "filename": "src\\Pages\\ProductPage\\ProductPage\\ProductPage.jsx"
+                },
+                {
+                    "blank": 2,
+                    "code": 17,
+                    "comment": 1,
+                    "filename": "src\\Pages\\ProductPage\\RecentlyViewed\\RecentlyViewed.jsx"
+                },
+                {
+                    "blank": 5,
+                    "code": 30,
+                    "comment": 4,
+                    "filename": "src\\Pages\\ProductPage\\RelatedProduct\\RelatedProduct.jsx"
+                },
+                {
+                    "blank": 22,
+                    "code": 156,
+                    "comment": 9,
+                    "filename": "src\\Pages\\Search\\SearchDrawer\\SearchDrawer.jsx"
+                },
+                {
+                    "blank": 3,
+                    "code": 33,
+                    "comment": 0,
+                    "filename": "src\\Pages\\Shop\\ShopPage\\ShopPage.jsx"
+                },
+                {
+                    "blank": 26,
+                    "code": 165,
+                    "comment": 29,
+                    "filename": "src\\Pages\\Shop\\ShopProducts\\ShopProducts.jsx"
+                },
+                {
+                    "blank": 12,
+                    "code": 76,
+                    "comment": 3,
+                    "filename": "src\\Pages\\ThankYou\\ThankYouPage\\test.jsx"
+                },
+                {
+                    "blank": 42,
+                    "code": 302,
+                    "comment": 5,
+                    "filename": "src\\Pages\\ThankYou\\ThankYouPage\\ThankYouPage.jsx"
+                },
+                {
+                    "blank": 22,
+                    "code": 182,
+                    "comment": 5,
+                    "filename": "src\\Pages\\TrackOrder\\TrackOrder.jsx"
+                },
+                {
+                    "blank": 13,
+                    "code": 113,
+                    "comment": 12,
+                    "filename": "src\\Pages\\Wishlist\\Wishlist.jsx"
+                },
+                {
+                    "blank": 2,
+                    "code": 107,
+                    "comment": 1,
+                    "filename": "src\\Routes\\Routes.jsx"
+                },
+                {
+                    "blank": 16,
+                    "code": 68,
+                    "comment": 5,
+                    "filename": "src\\Shared\\BottomBar\\BottomBar.jsx"
+                },
+                {
+                    "blank": 11,
+                    "code": 125,
+                    "comment": 3,
+                    "filename": "src\\Shared\\Footer\\Footer.jsx"
+                },
+                {
+                    "blank": 3,
+                    "code": 33,
+                    "comment": 0,
+                    "filename": "src\\Shared\\Navbar\\DropDownMenu.jsx"
+                },
+                {
+                    "blank": 0,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "src\\Shared\\Navbar\\Navbar.css"
+                },
+                {
+                    "blank": 23,
+                    "code": 225,
+                    "comment": 2,
+                    "filename": "src\\Shared\\Navbar\\Navbar.jsx"
+                },
+                {
+                    "blank": 7,
+                    "code": 72,
+                    "comment": 2,
+                    "filename": "src\\Shared\\Navbar\\NavDrawer\\NavDrawer.jsx"
+                },
+                {
+                    "blank": 7,
+                    "code": 37,
+                    "comment": 4,
+                    "filename": "src\\Wishlist\\WishlistContext.jsx"
+                },
+                {
+                    "blank": 0,
+                    "code": 15,
+                    "comment": 1,
+                    "filename": "tailwind.config.js"
+                },
+                {
+                    "blank": 1,
+                    "code": 5,
+                    "comment": 1,
+                    "filename": "vite.config.js"
+                }
+            ]
+        }
+    ]
+}

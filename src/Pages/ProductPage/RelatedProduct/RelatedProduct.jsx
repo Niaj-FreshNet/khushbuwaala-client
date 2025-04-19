@@ -1,6 +1,5 @@
 // RelatedProduct.js
-import React, { useEffect, useState } from 'react';
-import { Divider } from 'antd';
+import  { useEffect, useState } from 'react';
 import ProductCard from '../../../Components/ProductCard/ProductCard';
 import useItem from '../../../Hooks/useItems';
 
@@ -23,9 +22,9 @@ const RelatedProduct = ({ product }) => {
     }, [items, product]);
 
     return (
-        <div className="text-black mt-12 px-2">
-            <h2 className="text-lg text-black divider my-10 font-semibold">You may also like</h2>
-            <div className="max-w-screen-xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-1">
+        <div className="mt-12 px-2">
+            <h2 className="text-lg divider my-10 font-semibold">You may also like</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-1">
                 {relatedProducts.map((relatedProduct) => (
                     <ProductCard key={relatedProduct._id} product={relatedProduct} />
                 ))}

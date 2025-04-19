@@ -420,6 +420,25 @@ const CheckOutPage = () => {
             "Sherpur Sadar", "Jhenaigati", "Nakla", "Nalitabari", "Sreebardi"
         ],
 
+<<<<<<< HEAD
+=======
+        "Mymensingh": [
+            "Mymensingh Sadar", "Bhaluka", "Dhobaura", "Fulbaria", "Gaffargaon", "Gauripur", "Haluaghat", "Ishwarganj", "Muktagacha", "Nandail", "Phulpur", "Trishal"
+        ],
+
+        "Narayanganj": [
+            "Narayanganj Sadar", "Araihazar", "Bandar", "Rupganj", "Sonargaon"
+        ],
+
+        "Narsingdi": [
+            "Narsingdi Sadar", "Belabo", "Monohardi", "Palash", "Raipura", "Shibpur"
+        ],
+
+        "Netrokona": [
+            "Netrokona Sadar", "Atpara", "Barhatta", "Durgapur", "Khaliajuri", "Kalmakanda", "Kendua", "Madan", "Mohanganj", "Purbadhala"
+        ],
+
+>>>>>>> 2116d4fa5d328a63614b9fd9106bccbffec39f68
         "Rajbari": [
             "Rajbari Sadar", "Baliakandi", "Goalandaghat", "Pangsha"
         ],
@@ -427,7 +446,11 @@ const CheckOutPage = () => {
 
 
     return (
+<<<<<<< HEAD
         <div className="w-full bg-gray-50 text-black mx-auto mt-9 lg:mt-8 border-b-2 py-8">
+=======
+        <div className="max-w-screen-2xl bg-gray-50 mx-auto mt-9 lg:mt-8 border-b-2 py-8">
+>>>>>>> 2116d4fa5d328a63614b9fd9106bccbffec39f68
             {/* Checkout Page Header */}
             <div className="bg-black mx-auto flex justify-center items-center py-0 mb-8">
                 <h2 className="text-lg pt-2 font-bold text-white text-center py-[2px] my-auto">Checkout</h2>
