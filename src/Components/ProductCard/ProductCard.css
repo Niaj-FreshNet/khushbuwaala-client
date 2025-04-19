@@ -1,0 +1,64 @@
+.image-container {
+  position: relative;
+  overflow: hidden;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  height: 300px; /* Increased height */
+  transition: transform 0.7s ease; /* Increased duration */
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.7s ease, transform 0.7s ease; /* Increased duration */
+}
+
+.default {
+  opacity: 1;
+  transform: scale(1); /* Consistent scale */
+}
+
+.hover {
+  opacity: 0;
+  transform: scale(1); /* Start at the same scale as the default */
+}
+
+.image-container:hover .default {
+  opacity: 0;
+  transform: scale(1); /* No size change on hover out */
+}
+
+.image-container:hover .hover {
+  opacity: 1;
+  transform: scale(1.05); /* Slight zoom effect only */
+}
+
+.card {
+  transition: transform 0.5s ease, box-shadow 0.5s ease; /* Increased duration */
+}
+
+.card:hover {
+  transform: translateY(-3px); /* Slight lift on hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Hover shadow effect */
+}
+
+.custom-cart-btn {
+  background-color: #ff6b6b; /* Attractive color for button */
+  border: none;
+  font-weight: normal;
+  transition: all 0.5s ease; /* Increased duration */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.custom-cart-btn:hover {
+  background-color: #ff4757; /* Slightly darker on hover */
+  transform: translateY(-3px); /* Lift effect on hover */
+}
+
+.custom-cart-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}

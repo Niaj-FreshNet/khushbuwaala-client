@@ -1,0 +1,21 @@
+/* CategoryCard.css */
+
+.image-container {
+  position: relative;
+}
+
+.category-title {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for better readability */
+  
+}.category-card:hover .overlay {
+  background: rgba(0, 0, 0, 0.6); /* Darker overlay on hover */
+}
+
+.category-card:hover .category-name {
+  transform: scale(1.1); /* Slightly enlarge the text */
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7); /* Stronger shadow on hover */
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
