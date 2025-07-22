@@ -1,6 +1,6 @@
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { Button, Input, Row, Col } from "antd";
-import { DeleteOutlined, ShoppingCartOutlined } from '@ant-design/icons'; // Import icons
+import { DeleteOutlined } from '@ant-design/icons'; // Import icons
 import paymentMethod from '../../../assets/paymentMethod.svg';
 import { CartContext } from '../../../Cart/CartContext';
 import { FcEmptyTrash } from "react-icons/fc";
@@ -38,7 +38,7 @@ const CartPage = () => {
     };
 
     return (
-        <div className="max-w-screen-2xl mx-auto bg-white mt-9 lg:mt-8 py-8">
+        <div className="w-full mx-auto bg-white text-black mt-9 lg:mt-8 py-8">
             {/* Shopping Cart Page Header */}
             <div className="bg-black flex justify-center items-center py-0 mb-8">
                 <h2 className="text-lg pt-2 font-bold text-white text-center">Shopping Cart</h2>

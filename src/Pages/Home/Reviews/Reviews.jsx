@@ -1,4 +1,3 @@
-import React from 'react';
 import { FacebookFilled, InstagramFilled } from '@ant-design/icons'; // Ensure you have these icons installed
 import { Divider } from 'antd';
 import review1 from '../../../assets/r5.webp';
@@ -32,7 +31,7 @@ const celebrities = [
 const Reviews = () => {
     return (
         <div className="py-4 px-4 text-center">
-            <h2 className="text-xl font-bold mb-2 relative">
+            <h2 className="text-xl text-black font-bold mb-2 relative">
                 Inspired by us
             </h2>
             <Divider dashed>

@@ -1,4 +1,3 @@
-import React from 'react';
 import CarouselSlider from '../CarouselSlider/CarouselSlider';
 import Category from '../Category/Category';
 // import ShowCase from '../ShowCase/ShowCase';
@@ -19,8 +18,8 @@ import OudBannerMobile from "../../../assets/n31.webp";
 
 const HomePage = () => {
     return (
-        <div className='max-w-screen-2xl mx-auto'>
-            <div className='max-w-screen-2xl mx-auto'>
+        <div className='w-full mx-auto'>
+            <div className=''>
                 <CarouselSlider />
             </div>
             <div className='bg-gray-50 pt-6 pb-14'>
@@ -28,9 +27,8 @@ const HomePage = () => {
                     <BestSellers />
                 </div>
             </div>
-            <div className='mx-auto my-[2px]'>
+            <div className='w-full mx-auto'>
                 <Category />
-                
             </div>
             <div className='mx-auto mb-0'>
                 <Banner

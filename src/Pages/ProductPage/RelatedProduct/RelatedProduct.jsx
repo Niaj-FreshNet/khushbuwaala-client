@@ -1,6 +1,5 @@
 // RelatedProduct.js
-import React, { useEffect, useState } from 'react';
-import { Divider } from 'antd';
+import  { useEffect, useState } from 'react';
 import ProductCard from '../../../Components/ProductCard/ProductCard';
 import useItem from '../../../Hooks/useItems';
 

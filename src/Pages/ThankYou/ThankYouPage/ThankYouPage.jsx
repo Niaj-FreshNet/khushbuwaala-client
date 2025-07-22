@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { MdArrowDropDown, MdArrowDropUp } from 'react-icons/md';
-import { Button, Checkbox, Input, Radio, Form, message, Tag, Skeleton } from 'antd';
+import { Button, Skeleton } from 'antd';
 import { CheckCircleOutlined } from '@ant-design/icons';
 import useOrders from '../../../Hooks/useOrders';
 import OrderReciept from '../../Dashboard/Orders/OrderReciept';
@@ -131,7 +131,7 @@ const ThankYouPage = () => {
     };
 
     return (
-        <div className="max-w-screen-2xl bg-gray-50 mx-auto mt-9 lg:mt-8 border-b-2 py-8">
+        <div className="w-full bg-gray-50 text-black mx-auto mt-9 lg:mt-8 border-b-2 py-8">
             {/* Checkout Page Header */}
             <div className="bg-black mx-auto flex justify-center items-center py-0 mb-8">
                 <h2 className="text-lg font-bold pt-2 text-white text-center py-[2px] my-auto">Alhamdulillah! Order Confirmed</h2>

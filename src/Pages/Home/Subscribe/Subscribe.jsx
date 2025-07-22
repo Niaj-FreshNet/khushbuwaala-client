@@ -1,10 +1,9 @@
-import React from 'react';
 import { Divider, Input, Button } from 'antd';
 
 const Subscribe = () => {
     return (
         <div className="max-w-lg mx-auto text-center p-6">
-            <h2 className="text-xl font-bold -mb-2 relative">
+            <h2 className="text-xl text-black font-bold -mb-2 relative">
                 Subscribe to Our Newsletter
             </h2>
             <Divider dashed>

@@ -1,17 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Link, NavLink, useNavigate } from "react-router-dom";
-import { SearchOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/icons';
+import { useContext, useEffect, useState } from 'react';
+import { NavLink, useNavigate } from "react-router-dom";
+import { SearchOutlined,  } from '@ant-design/icons';
 import { Drawer, Dropdown, Menu } from 'antd';
 import NavDrawer from './NavDrawer/NavDrawer';
 import './Navbar.css';
-import { MdFavoriteBorder, MdOutlineArrowDropDownCircle } from 'react-icons/md';
+import { MdFavoriteBorder } from 'react-icons/md';
 import { PiShoppingCartSimpleBold } from 'react-icons/pi';
 import CartDrawer from '../../Pages/AddToCart/CartDrawer/CartDrawer';
 import { CartContext } from '../../Cart/CartContext';
 import logo from '../../assets/KhushbuWaala.webp';
 import { IoIosArrowDropdown } from 'react-icons/io';
 import SearchDrawer from '../../Pages/Search/SearchDrawer/SearchDrawer';
-import { CiLocationArrow1 } from 'react-icons/ci';
 import { TbLocation } from 'react-icons/tb';
 import { WishlistContext } from '../../Wishlist/WishlistContext';
 
@@ -29,22 +28,22 @@ const Navbar = () => {
     const menu = (
         <Menu className="bg-white border border-gray-200 rounded-md shadow-lg">
             <Menu.Item className="hover:bg-gray-100 transition-colors duration-300">
-                <NavLink to="/inspired-perfume-oil" className="block px-4 py-2 text-gray-800 font-semibold text-md">
+                <NavLink to="/inspired-perfume-oil" className="block px-4 py-2 text-black font-bold text-md">
                     Inspired Perfume Oil
                 </NavLink>
             </Menu.Item>
             <Menu.Item className="hover:bg-gray-100 transition-colors duration-300">
-                <NavLink to="/oriental-attar" className="block px-4 py-2 text-gray-800 font-semibold text-md">
+                <NavLink to="/oriental-attar" className="block px-4 py-2 text-black font-bold text-md">
                     Oriental & Arabian Attar
                 </NavLink>
             </Menu.Item>
             <Menu.Item className="hover:bg-gray-100 transition-colors duration-300">
-                <NavLink to="/artificial-oud" className="block px-4 py-2 text-gray-800 font-semibold text-md">
+                <NavLink to="/artificial-oud" className="block px-4 py-2 text-black font-bold text-md">
                     Artificial Oud
                 </NavLink>
             </Menu.Item>
             <Menu.Item className="hover:bg-gray-100 transition-colors duration-300">
-                <NavLink to="/natural-attar" className="block px-4 py-2 text-gray-800 font-semibold text-md">
+                <NavLink to="/natural-attar" className="block px-4 py-2 text-black font-bold text-md">
                     Natural Collections
                 </NavLink>
             </Menu.Item>
@@ -52,7 +51,7 @@ const Navbar = () => {
     );
 
     const navOptions = (
-        <ul className="flex my-auto space-x-6">
+        <ul className="flex my-auto space-x-6 text-black font-semibold">
             <li>
                 <NavLink
                     to="/"
@@ -157,7 +156,7 @@ const Navbar = () => {
 
     return (
         <>
-            <div className={`navbar max-w-screen-2xl mx-auto h-2 border-red-600 glassy-navbar uppercase text-sm font-thin ${isVisible ? 'top-0' : '-top-16'} fixed w-full z-50`}>
+            <div className={`navbar mx-auto h-2 border-red-600 glassy-navbar uppercase text-sm font-thin ${isVisible ? 'top-0' : '-top-16'} fixed w-full z-50`}>
                 <div className='flex-1 justify-between px-2 lg:px-8 mx-auto my-auto items-center'>
                     <div>
                         <div className="dropdown">
@@ -188,7 +187,7 @@ const Navbar = () => {
                     <div className="flex-grow hidden lg:flex justify-center items-center">
                         {navOptions}
                     </div>
-                    <div className="flex gap-8 items-center">
+                    <div className="flex gap-8 items-center text-black">
                         {/* Desktop Icons */}
                         <div className="hidden lg:flex gap-8 items-center">
                             <span onClick={handleSearch} className="relative group transition-transform duration-200 ease-in-out transform hover:scale-110 cursor-pointer">

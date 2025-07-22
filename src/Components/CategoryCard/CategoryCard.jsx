@@ -1,4 +1,3 @@
-import React from 'react';
 import { SfLink } from '@storefront-ui/react';
 import './CategoryCard.css'; // Import custom styles
 

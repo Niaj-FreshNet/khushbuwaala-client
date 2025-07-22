@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { Button, Input, Row, Col, Spin, Alert, Tag } from "antd";
+import { useState } from "react";
+import { Button, Input, Spin, Alert, Tag } from "antd";
 import useOrders from "../../Hooks/useOrders";
 import OrderReciept from "../Dashboard/Orders/OrderReciept";
-import Search from "antd/es/transfer/search";
 import moment from "moment";
 import { Helmet } from "react-helmet-async";
 
@@ -56,7 +55,7 @@ const TrackOrder = () => {
     const timeAgo = moment(order?.orderPlacedAt).fromNow(); // e.g., "3 hours ago"
 
     return (
-        <div className="max-w-screen-2xl mx-auto bg-white mt-9 lg:mt-8 py-8">
+        <div className="w-full mx-auto bg-white text-black mt-9 lg:mt-8 py-8">
             <Helmet>
                 <title>Track Your Order | Order Tracking</title>
                 <meta

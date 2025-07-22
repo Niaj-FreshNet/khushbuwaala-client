@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { HomeOutlined, MailOutlined, PhoneOutlined, ContactsOutlined } from '@ant-design/icons';
 import SocialIcons from '../../Components/SocialIcons/SocialIcons';
 
@@ -19,7 +19,7 @@ const Footer = () => {
 
     return (
         <>
-            <footer className="max-w-screen-2xl bg-gray-100 pt-16 pb-8 px-8">
+            <footer className="bg-gray-100 pt-16 pb-8 px-8 text-black">
                 <div className="max-w-screen-lg mx-auto justify-between flex flex-col md:flex-row gap-4 md:gap-6 px-8">
 
                     {/* Company Information */}
@@ -129,7 +129,7 @@ const Footer = () => {
             </footer>
             {/* Footer bottom */}
             <div className="text-center bg-gray-200 text-xs text-gray-500">
-                <p className='m-1 p-1'>Copyright &copy; {new Date().getFullYear()} KhushbuWaala outfitters all rights reserved. Powered by <strong>KhushbuWaala</strong></p>
+                <p className='mx-1 p-2'>Copyright &copy; {new Date().getFullYear()} KhushbuWaala outfitters all rights reserved. Powered by <strong>KhushbuWaala</strong></p>
             </div>
         </>
     );

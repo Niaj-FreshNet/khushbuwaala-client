@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Carousel, Divider, Skeleton } from 'antd';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import ProductCard from '../../../Components/ProductCard/ProductCard';
@@ -50,8 +50,8 @@ const InspiredPerfumeProduct = ({ columns }) => {
     if (isLoading) {
         return (
             <div className="container mx-auto">
-                <h2 className="text-xl text-center font-bold -mb-2 relative">
-                Inspired Perfume Oils
+                <h2 className="text-xl text-black text-center font-bold -mb-2 relative">
+                    Inspired Perfume Oils
                 </h2>
                 <Divider dashed>
                     <span className="block w-36 mx-auto mb-2 border-b-2 border-red-500"></span> {/* Red underline */}
@@ -72,8 +72,8 @@ const InspiredPerfumeProduct = ({ columns }) => {
     if (isError) {
         return (
             <div className="container mx-auto">
-                <h2 className="text-xl text-center font-bold -mb-2 relative">
-                Inspired Perfume Oils
+                <h2 className="text-xl text-black text-center font-bold -mb-2 relative">
+                    Inspired Perfume Oils
                 </h2>
                 <Divider dashed>
                     <span className="block w-36 mx-auto mb-2 border-b-2 border-red-500"></span> {/* Red underline */}
@@ -95,7 +95,7 @@ const InspiredPerfumeProduct = ({ columns }) => {
 
     return (
         <div className="container mx-auto">
-            <h2 className="text-xl text-center font-bold -mb-2 relative">
+            <h2 className="text-xl text-black text-center font-bold -mb-2 relative">
                 Inspired Perfume Oils
             </h2>
             <Divider dashed>

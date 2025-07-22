@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { NavLink, useLoaderData, useLocation, useParams } from 'react-router-dom';
 import Breadcrumbs from '../BreadCrumbs/BreadCrumbs';
 import ProductAccordion from '../ProductAccordion/ProductAccordion';
@@ -46,7 +46,7 @@ const ProductPage = () => {
 
     if (isLoading) {
         return (
-            <div className="max-w-screen-2xl mx-auto mt-9 lg:mt-8 mb-8 py-8">
+            <div className="mx-auto mt-9 lg:mt-8 mb-8 py-8">
                 <div className="bg-gray-100 mx-auto flex justify-between px-6 lg:px-20 py-2 lg:py-4">
                     <Skeleton width={150} height={30} />
                     <Skeleton circle width={30} height={30} />
@@ -72,11 +72,57 @@ const ProductPage = () => {
     }
 
     if (isError) {
-        return <div>Error: {error.message}</div>;
+        return (
+            <div className="mx-auto mt-9 lg:mt-8 mb-8 py-8">
+                <div className="bg-gray-100 mx-auto flex justify-between px-6 lg:px-20 py-2 lg:py-4">
+                    <Skeleton width={150} height={30} />
+                    <Skeleton circle width={30} height={30} />
+                </div>
+                <div className="max-w-screen-xl px-4 mx-auto">
+                    <div className="flex flex-col lg:flex-row justify-between gap-4 mt-8">
+                        <div className="lg:w-1/2">
+                            <Skeleton height={400} />
+                        </div>
+                        <div className="lg:w-1/2 mt-2 lg:mt-0 flex flex-col lg:pr-8">
+                            <Skeleton height={40} width="80%" />
+                            <Skeleton count={3} height={20} style={{ marginTop: '1rem' }} />
+                            <Skeleton height={200} style={{ marginTop: '2rem' }} />
+                        </div>
+                    </div>
+                </div>
+                <div className="max-w-screen-xl px-4 mx-auto mt-8">
+                    <Skeleton height={40} width="50%" />
+                    <Skeleton height={300} style={{ marginTop: '1rem' }} />
+                </div>
+            </div>
+        );
     }
 
     if (!product.name) {
-        return <div>Product not found</div>;
+        return (
+            <div className="mx-auto mt-9 lg:mt-8 mb-8 py-8">
+                <div className="bg-gray-100 mx-auto flex justify-between px-6 lg:px-20 py-2 lg:py-4">
+                    <Skeleton width={150} height={30} />
+                    <Skeleton circle width={30} height={30} />
+                </div>
+                <div className="max-w-screen-xl px-4 mx-auto">
+                    <div className="flex flex-col lg:flex-row justify-between gap-4 mt-8">
+                        <div className="lg:w-1/2">
+                            <Skeleton height={400} />
+                        </div>
+                        <div className="lg:w-1/2 mt-2 lg:mt-0 flex flex-col lg:pr-8">
+                            <Skeleton height={40} width="80%" />
+                            <Skeleton count={3} height={20} style={{ marginTop: '1rem' }} />
+                            <Skeleton height={200} style={{ marginTop: '2rem' }} />
+                        </div>
+                    </div>
+                </div>
+                <div className="max-w-screen-xl px-4 mx-auto mt-8">
+                    <Skeleton height={40} width="50%" />
+                    <Skeleton height={300} style={{ marginTop: '1rem' }} />
+                </div>
+            </div>
+        );
     }
 
     const handleReadMoreClick = () => {

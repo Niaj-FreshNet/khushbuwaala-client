@@ -1,5 +1,4 @@
 // Breadcrumbs.js
-import React from 'react';
 import { Breadcrumb } from 'antd';
 import { Link } from 'react-router-dom';
 
@@ -16,6 +15,7 @@ const Breadcrumbs = ({ product }) => {
     semiOrganic: "semi-organic",
     organic: "organic",
     brand: "brand",
+    giftsAndPackages: "gifts-and-packages",
   };
 
   const categoryMapping = {
@@ -26,6 +26,7 @@ const Breadcrumbs = ({ product }) => {
     semiOrganic: "Semi-Organic",
     organic: "Organic",
     brand: "Brand",
+    giftsAndPackages: "Gifts and Packages",
   };
 
   const name = product.name;

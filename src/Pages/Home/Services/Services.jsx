@@ -53,7 +53,7 @@ const Services = () => {
     }, []);
 
     return (
-        <div className="p-6">
+        <div className="p-6 text-black">
             {/* Optional Title */}
             {/* <h2 className="text-2xl font-medium text-left mb-4">Our Services</h2> */}
 

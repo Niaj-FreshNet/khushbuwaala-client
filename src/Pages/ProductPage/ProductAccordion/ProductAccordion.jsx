@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button, Collapse, Input, Rate, Tag } from 'antd';
 import { PlusOutlined, MinusOutlined } from '@ant-design/icons';
 import TextArea from 'antd/es/input/TextArea';
@@ -37,6 +37,7 @@ const ProductAccordion = ({ product, activeKey, setActiveKey, descriptionPanelRe
         semiOrganic: "Semi-Organic",
         organic: "Organic",
         brand: "Brand",
+        giftsAndPackages: "Gifts and Packages",
     };
 
     const handleMessengerClick = (e) => {
@@ -140,7 +141,7 @@ const ProductAccordion = ({ product, activeKey, setActiveKey, descriptionPanelRe
             </Collapse>
 
             {/* SKU, Category, and Smells */}
-            <div className="text-xs mt-6">
+            <div className="text-xs text-black mt-6">
                 <p>SKU: <span className='text-gray-600'>{product.sku}</span></p>
                 <p>Category: <span className='text-gray-600'>{categoryMapping[product.category] || product.category}</span></p>
                 <div className="mt-2">
