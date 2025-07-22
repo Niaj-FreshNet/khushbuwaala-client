@@ -213,10 +213,6 @@ const ProductCard = ({ product, columns }) => {
     semiOrganic: "semi-organic",
     organic: "organic",
     brand: "brand",
-<<<<<<< HEAD
-    giftsAndPackages: "gifts-and-packages",
-=======
->>>>>>> 2116d4fa5d328a63614b9fd9106bccbffec39f68
   };
 
   const categoryPath = categoryPathMapping[product.category];
@@ -278,11 +274,7 @@ const ProductCard = ({ product, columns }) => {
         </SfLink>
       </Link>
       <div className="p-2 border-t border-neutral-200">
-<<<<<<< HEAD
-        <p className="block py-1 lg:py-0 text-md lg:text-lg font-bold text-neutral-700">{name}</p>
-=======
         <p className="block pt-1 pb-2 font-normal text-neutral-700">{name}</p>
->>>>>>> 2116d4fa5d328a63614b9fd9106bccbffec39f68
         <div className="flex justify-between items-center">
           <ConfigProvider
             button={{
@@ -292,11 +284,7 @@ const ProductCard = ({ product, columns }) => {
             <Button
               type="primary"
               size={buttonSize}
-<<<<<<< HEAD
-              className="custom-cart-btn text-xs lg:text-sm"
-=======
               className="custom-cart-btn text-xs"
->>>>>>> 2116d4fa5d328a63614b9fd9106bccbffec39f68
               icon={<ShoppingCartOutlined />}
               onClick={(e) => {
                 e.stopPropagation(); // Prevent triggering the Link navigation
@@ -306,11 +294,7 @@ const ProductCard = ({ product, columns }) => {
               Add to Cart
             </Button>
           </ConfigProvider>
-<<<<<<< HEAD
-          <span className="text-xs md:text-sm lg:text-lg">{price} BDT</span>
-=======
           <span className="text-xs md:text-sm">{price} BDT</span>
->>>>>>> 2116d4fa5d328a63614b9fd9106bccbffec39f68
         </div>
       </div>
     </div>

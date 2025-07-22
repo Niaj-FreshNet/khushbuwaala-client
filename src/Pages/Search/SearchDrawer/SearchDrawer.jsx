@@ -1,5 +1,5 @@
 import { Button, Drawer, Select, Skeleton, Tag } from 'antd';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 import Search from 'antd/es/input/Search';
@@ -18,6 +18,17 @@ const SearchDrawer = ({ visible, onClose }) => {
     const [selectedCategories, setSelectedCategories] = useState("all");
     const [searchValue, setSearchValue] = useState('');
     const [searchPerformed, setSearchPerformed] = useState(true);
+
+    const searchInputRef = useRef(null);
+
+    useEffect(() => {
+        if (visible && searchInputRef.current) {
+            // Slight delay ensures Drawer animation completes
+            setTimeout(() => {
+                searchInputRef.current?.focus();
+            }, 300);
+        }
+    }, [visible]);
 
     const handleSearch = (value) => {
         setSearchValue(value);
@@ -45,14 +56,14 @@ const SearchDrawer = ({ visible, onClose }) => {
     // });
 
     const filteredItems = items
-    .filter(item => {
-        const matchesCategory = selectedCategories === "all" || item.category === selectedCategories;
-        const matchesSearchValue = item.name.toLowerCase().includes(searchValue.toLowerCase()) ||
-            item.smell.some(smellType => smellType.toLowerCase().includes(searchValue.toLowerCase()));
+        .filter(item => {
+            const matchesCategory = selectedCategories === "all" || item.category === selectedCategories;
+            const matchesSearchValue = item.name.toLowerCase().includes(searchValue.toLowerCase()) ||
+                item.smell.some(smellType => smellType.toLowerCase().includes(searchValue.toLowerCase()));
 
-        return matchesCategory && matchesSearchValue;
-    })
-    .reverse(); // Reverse to show newly added items first
+            return matchesCategory && matchesSearchValue;
+        })
+        .reverse(); // Reverse to show newly added items first
 
     const handleItemClick = (item) => {
         const categoryPathMapping = {
@@ -95,6 +106,7 @@ const SearchDrawer = ({ visible, onClose }) => {
                         {/* Search Filter */}
                         <div className='mt-2 mb-2 mx-2'>
                             <Search
+                                ref={searchInputRef}
                                 placeholder="Search products..."
                                 enterButton
                                 onSearch={handleSearch}
@@ -156,9 +168,17 @@ const SearchDrawer = ({ visible, onClose }) => {
                     <div className='flex justify-between items-center mt-5 px-4 pb-3'>
                         <div className='w-full mx-2'>
                             {isLoading ? (
-                                <div className='w-full mt-6'>
-                                    <Skeleton active />
-                                </div>
+                                <>
+                                    <div className='w-full mt-6'>
+                                        <Skeleton active />
+                                    </div>
+                                    <div className='w-full mt-6'>
+                                        <Skeleton active />
+                                    </div>
+                                    <div className='w-full mt-6'>
+                                        <Skeleton active />
+                                    </div>
+                                </>
                             ) : isError ? (
                                 <div className='text-red-500'>Error: {error}</div>
                             ) : searchPerformed ? (
@@ -167,16 +187,17 @@ const SearchDrawer = ({ visible, onClose }) => {
                                         <div key={index} className='flex items-start justify-between border-b pb-3 transition-all hover:bg-gray-50 cursor-pointer'
                                             onClick={() => handleItemClick(item)}
                                         >
-                                            <div className='w-26 h-36 flex-shrink-0 rounded overflow-hidden'>
+                                            <div className='w-36 h-32 flex-shrink-0 rounded overflow-hidden'>
                                                 <img
                                                     src={item.primaryImage}
                                                     alt={item.name}
                                                     className='w-full h-full object-cover'
                                                 />
                                             </div>
-                                            <div className='flex-1 space-y-1 pl-4'>
+                                            <div className='flex flex-col flex-1 space-y-1 pl-4'>
                                                 <h4 className='font-semibold text-md mb-2'>{item.name}</h4>
-                                                <p className='text-xs text-gray-600'>Tk {item.price} BDT</p>
+                                                <p className='text-xs text-gray-600'>3 ml price: </p>
+                                                <p className='text-xs text-gray-900'>Tk {item.price} BDT</p>
                                             </div>
                                         </div>
                                     ))}
