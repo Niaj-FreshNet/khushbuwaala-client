@@ -29,6 +29,7 @@ export const router = createBrowserRouter([
     {
         path: "/", element: <Main />,
         errorElement: <ErrorPage />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: '/', element: <HomePage />
@@ -61,6 +62,8 @@ export const router = createBrowserRouter([
                 path: ':category/:name',
                 element: <ProductPage />,
                 loader: async ({ params }) => {
+                    // const response = await fetch(`https://khushbuwaala-server.quickway2services.com/item/${params.name}`);
+                    const response = await fetch(`https://khushbuwaala-server.onrender.com/item/${params.name}`);
                     // const response = await fetch(`https://khushbuwaala-server.onrender.com/item/${params.name}`);
                     const response = await fetch(`https://previous.khushbuwaala.com/item/${params.name}`);
                     if (!response.ok) {
